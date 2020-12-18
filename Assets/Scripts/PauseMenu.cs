@@ -8,47 +8,40 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     public static bool GameIsPaused = false;
 
-    public GameObject pauseMenuUI;
+    public GameObject pauseMenu;
 
-    private void Update()
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+
+        if (InputManager.pause)
         {
-            if (GameIsPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
+            Time.timeScale = 0;
+            Cursor.visible = true;
+            pauseMenu.SetActive(true);
+        }
+        if (InputManager.unpause)
+        {
+            Time.timeScale = 1;
+            Cursor.visible = false;
+            pauseMenu.SetActive(false);
+
         }
     }
 
-
-    public void Resume()
+    public void MainMenu()
     {
-        pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        GameIsPaused = false;
-    }
-
-    public void Pause()
-    {
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
-    }
-
-    public void LoadMenu()
-    {
-        Time.timeScale = 1f;
         SceneManager.LoadScene("StartMenu");
     }
 
-    public void QuitGame()
+    public void UnpauseGame()
     {
-        Debug.Log("Quit");
+        Time.timeScale = 1;
+        Cursor.visible = false;
+        pauseMenu.SetActive(false);
+    }
+    public void QuidGame()
+    {
+        Debug.Log("QUIT");
         Application.Quit();
     }
 }
