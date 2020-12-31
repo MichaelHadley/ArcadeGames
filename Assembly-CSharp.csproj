@@ -69,8 +69,9 @@
     <Compile Include="Assets\Scripts\Menu\StartMenu.cs" />
     <Compile Include="Assets\Scripts\SpaceInvaders\Backgrounnd\BGMovement.cs" />
     <Compile Include="Assets\Scripts\SpaceInvaders\Bullet\Bullet.cs" />
+    <Compile Include="Assets\Scripts\SpaceInvaders\Bullet\EnemyBullet.cs" />
+    <Compile Include="Assets\Scripts\SpaceInvaders\Enemy\EnemyController.cs" />
     <Compile Include="Assets\Scripts\SpaceInvaders\Player\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\SpaceInvaders\Player\Shooting.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />

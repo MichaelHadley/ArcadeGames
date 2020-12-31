@@ -2,29 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
-    [Header("Player variables")]
-    public GameObject Player;
-    public float moveSpeed;
-    public Rigidbody2D rb;
-    
+    public GameObject Enemy;
+
     [Header("Bullet variables")]
+    public GameObject hitEffect;
     public GameObject bulletPrefab;
     public Vector3 bulletOffset;
     public float fireRate;
 
     private float fireCoolDown;
-    private Vector2 Movement;
 
-    public static PlayerController _instance;
-    public static PlayerController Instance
+    public static EnemyController _instance;
+    public static EnemyController Instance
     {
         get
         {
             if (_instance == null)
             {
-                _instance = FindObjectOfType<PlayerController>();
+                _instance = FindObjectOfType<EnemyController>();
                 _instance.Inited = false;
             }
             return _instance;
@@ -35,20 +32,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement.x = Input.GetAxisRaw("Horizontal");
         Shoot();
-    }
-
-    private void FixedUpdate()
-    {
-        rb.MovePosition(rb.position + Movement * moveSpeed * Time.fixedDeltaTime);
     }
 
     void Shoot()
     {
         fireCoolDown -= Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Space) && fireCoolDown <= 0)
+        if (fireCoolDown <= 0)
         {
             fireCoolDown = fireRate;
 
@@ -60,5 +51,4 @@ public class PlayerController : MonoBehaviour
             bullet.layer = gameObject.layer;
         }
     }
-
 }
