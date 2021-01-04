@@ -5,11 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
-    public void PlayGame()
+    public void PlayFrogger()
     {
         SceneManager.LoadScene("Frogger");
     }
- 
+
+    public void PlaySpaceInvaders()
+    {
+        SceneManager.LoadScene("SpaceInvaders");
+    }
+
     public void QuitGame()
     {
         Debug.Log("Quit");
