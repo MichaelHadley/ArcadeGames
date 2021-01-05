@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public float fireRate;
 
     private float fireCoolDown;
-    private Vector2 Movement;
+    private Vector2 movement;
 
     public static PlayerController _instance;
     public static PlayerController Instance
@@ -32,19 +32,23 @@ public class PlayerController : MonoBehaviour
     }
     public bool Inited { get; private set; }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        Movement.x = Input.GetAxisRaw("Horizontal");
+        Movement();
         Shoot();
     }
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + Movement * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
-    void Shoot()
+    public void Movement()
+    {
+        movement.x = Input.GetAxisRaw("Horizontal");
+    }
+
+    public void Shoot()
     {
         fireCoolDown -= Time.deltaTime;
 
@@ -60,5 +64,4 @@ public class PlayerController : MonoBehaviour
             bullet.layer = gameObject.layer;
         }
     }
-
 }

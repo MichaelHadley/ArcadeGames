@@ -28,20 +28,15 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    public void MainMenu()
-    {
-        SceneManager.LoadScene("GameMenu");
-    }
-
-    public void UnpauseGame()
+    public void ResumeGame()
     {
         Time.timeScale = 1;
         Cursor.visible = false;
         pauseMenu.SetActive(false);
     }
-    public void QuidGame()
+
+    public void QuitGame()
     {
-        Debug.Log("QUIT");
-        Application.Quit();
+        SceneManager.LoadScene("GameMenu");
     }
 }

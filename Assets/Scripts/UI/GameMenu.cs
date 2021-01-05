@@ -7,7 +7,7 @@ public class GameMenu : MonoBehaviour
 {
     public void PlayFrogger()
     {
-        SceneManager.LoadScene("Frogger");
+        SceneManager.LoadScene("FroggerMenu");
     }
 
     public void LoadSpaceInvadersMenu()

@@ -18,7 +18,11 @@ public class InputManager : MonoBehaviour
         {
             Frogger.Instance.MoveUp();
         }
-        
+
+        // SpaceInvaders controls
+        //PlayerController.Instance.Movement();
+        //PlayerController.Instance.Shoot();
+
         //Pause menu keypress code here
         pause = Input.GetKey(KeyCode.Escape);
     }
