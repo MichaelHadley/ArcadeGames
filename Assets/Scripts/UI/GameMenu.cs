@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartMenu : MonoBehaviour
+public class GameMenu : MonoBehaviour
 {
-    public void PlayGame()
+    public void PlayFrogger()
     {
         SceneManager.LoadScene("Frogger");
     }
- 
+
+    public void LoadSpaceInvadersMenu()
+    {
+        SceneManager.LoadScene("SpaceInvadersMenu");
+    }
+
     public void QuitGame()
     {
         Debug.Log("Quit");
