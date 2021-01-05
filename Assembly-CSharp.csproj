@@ -64,22 +64,14 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Frogger\Frogger.cs" />
     <Compile Include="Assets\Scripts\InputManager.cs" />
-<<<<<<< HEAD
-    <Compile Include="Assets\Scripts\Menu\PauseMenu.cs" />
-    <Compile Include="Assets\Scripts\Menu\StartMenu.cs" />
-=======
->>>>>>> 559317ddb7bb92e90cb28124063078eea424d41d
     <Compile Include="Assets\Scripts\SpaceInvaders\Backgrounnd\BGMovement.cs" />
     <Compile Include="Assets\Scripts\SpaceInvaders\Bullet\Bullet.cs" />
     <Compile Include="Assets\Scripts\SpaceInvaders\Bullet\EnemyBullet.cs" />
     <Compile Include="Assets\Scripts\SpaceInvaders\Enemy\EnemyController.cs" />
     <Compile Include="Assets\Scripts\SpaceInvaders\Player\PlayerController.cs" />
-<<<<<<< HEAD
-=======
     <Compile Include="Assets\Scripts\UI\GameMenu.cs" />
     <Compile Include="Assets\Scripts\UI\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\UI\SpaceInvadersMenu.cs" />
->>>>>>> 559317ddb7bb92e90cb28124063078eea424d41d
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
@@ -135,7 +127,6 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <Reference Include="Unity.Timeline.Editor">
-<<<<<<< HEAD
       <HintPath>D:/micha/ArcadeGames/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
@@ -152,24 +143,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
       <HintPath>D:/micha/ArcadeGames/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
-=======
-      <HintPath>C:/repos/Unity/ArcadeGames/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/repos/Unity/ArcadeGames/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>C:/repos/Unity/ArcadeGames/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/repos/Unity/ArcadeGames/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/repos/Unity/ArcadeGames/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>C:/repos/Unity/ArcadeGames/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
->>>>>>> 559317ddb7bb92e90cb28124063078eea424d41d
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -355,7 +328,6 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.11f1/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
-<<<<<<< HEAD
       <HintPath>D:/micha/ArcadeGames/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
@@ -366,18 +338,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>D:/micha/ArcadeGames/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
-=======
-      <HintPath>C:/repos/Unity/ArcadeGames/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.Editor">
-      <HintPath>C:/repos/Unity/ArcadeGames/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>C:/repos/Unity/ArcadeGames/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>C:/repos/Unity/ArcadeGames/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
->>>>>>> 559317ddb7bb92e90cb28124063078eea424d41d
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.11f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

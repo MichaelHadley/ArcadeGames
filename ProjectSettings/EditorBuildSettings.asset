@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SpaceInvadersMenu.unity
     guid: 6276871e67344534abe98a7e78c9a441
+  - enabled: 1
+    path: Assets/Scenes/FroggerMenu.unity
+    guid: 906d9e27c852eaf4bb6926445d9a5a41
   m_configObjects: {}

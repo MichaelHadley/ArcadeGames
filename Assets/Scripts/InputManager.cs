@@ -7,18 +7,38 @@ public class InputManager : MonoBehaviour
     public static bool pause;
     public static bool unpause;
 
-    public bool moveUp;
+    public static bool moveForwards;
+    public static bool moveBackwards;
+    public static bool moveLeft;
+    public static bool moveRight;
+   
 
     // Update is called once per frame
     void Update()
     {
-        moveUp = Input.GetKeyDown(KeyCode.W);
+        moveForwards = Input.GetKeyDown(KeyCode.W);
+        moveBackwards = Input.GetKeyDown(KeyCode.S);
+        moveLeft = Input.GetKeyDown(KeyCode.A);
+        moveRight = Input.GetKeyDown(KeyCode.D);
 
-        if (moveUp)
+        //movement
+        if (moveForwards)
         {
-            Frogger.Instance.MoveUp();
+            Frogger.Instance.MoveForwards();
         }
-        
+        if (moveLeft)
+        {
+            Frogger.Instance.MoveLeft();
+        }
+        if (moveRight)
+        {
+            Frogger.Instance.MoveRight();
+        }
+        if (moveBackwards)
+        {
+            Frogger.Instance.MoveBackwards();
+        }
+
         //Pause menu keypress code here
         pause = Input.GetKey(KeyCode.Escape);
     }

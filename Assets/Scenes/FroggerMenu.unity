@@ -240,7 +240,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 866606329}
-        m_MethodName: PlayGame
+        m_MethodName: PlayFrogger
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
