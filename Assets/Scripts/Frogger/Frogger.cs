@@ -167,7 +167,7 @@ public class Frogger : MonoBehaviour
                 if (laneDefinition[i] == laneType.RoadLane)
                 {
                     Traffic[curTrafficItem].transform.position = thisObjStart + new Vector3(0, laneGap * i, 0);
-                    Traffic[curTrafficItem].transform.DOMoveX(thisObjEnd.x, 10f).SetEase(Ease.Linear);
+                    Traffic[curTrafficItem].transform.DOMoveX(thisObjEnd.x, 20f).SetEase(Ease.Linear);
                     curTrafficItem++;
                     if (curTrafficItem == Traffic.Count)
                     {
@@ -178,7 +178,7 @@ public class Frogger : MonoBehaviour
                 else if (laneDefinition[i] == laneType.LogLane)
                 {
                     Logs[curLogItem].transform.position = thisObjStart + new Vector3(0, laneGap * i, 0);
-                    Logs[curLogItem].transform.DOMoveX(thisObjEnd.x, 10f).SetEase(Ease.Linear);
+                    Logs[curLogItem].transform.DOMoveX(thisObjEnd.x, 15f).SetEase(Ease.Linear);
                     curLogItem++;
                     if (curLogItem == Logs.Count)
                     {
