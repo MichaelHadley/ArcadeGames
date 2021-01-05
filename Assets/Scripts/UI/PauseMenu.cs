@@ -30,7 +30,7 @@ public class PauseMenu : MonoBehaviour
 
     public void MainMenu()
     {
-        SceneManager.LoadScene("StartMenu");
+        SceneManager.LoadScene("GameMenu");
     }
 
     public void UnpauseGame()
