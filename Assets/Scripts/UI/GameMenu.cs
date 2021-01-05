@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GameMenu : MonoBehaviour
 {
+    //Frogger UI in Main menu
+    public void FroggerMenu()
+    {
+        SceneManager.LoadScene("FroggerMenu");
+    }
+
+    //Play UI in FroggerMenu loads frogger scene when pressed
     public void PlayFrogger()
     {
         SceneManager.LoadScene("FroggerMenu");

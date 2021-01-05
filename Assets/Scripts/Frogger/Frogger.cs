@@ -201,7 +201,7 @@ public class Frogger : MonoBehaviour
         }
     }
     
-    public void MoveUp()
+    public void MoveForwards()
     {
         if (!isMoving)
         {
@@ -210,9 +210,37 @@ public class Frogger : MonoBehaviour
             StartCoroutine("LandingCheck");
         }
     }
+    public void MoveBackwards()
+    {
+        if (!isMoving)
+        {
+            isMoving = true;
+            playerSprite.transform.DOMoveY(playerSprite.transform.position.y - laneGap, 0.5f);
+            StartCoroutine("LandingCheck");
+        }
+    }
+    public void MoveRight()
+    {
+        if (!isMoving)
+        {
+            isMoving = true;
+            playerSprite.transform.DOMoveX(playerSprite.transform.position.x + laneGap, 0.5f);
+            StartCoroutine("LandingCheck");
+        }
+    }
+    public void MoveLeft()
+    {
+        if (!isMoving)
+        {
+            isMoving = true;
+            playerSprite.transform.DOMoveX(playerSprite.transform.position.x - laneGap, 0.5f);
+            StartCoroutine("LandingCheck");
+        }
+    }
+
     IEnumerator LandingCheck()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f); //time to wait between movements
         playerLane++;
         isMoving = false;
         if(playerLane == numOfLanes)
