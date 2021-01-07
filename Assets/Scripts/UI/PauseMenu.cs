@@ -28,16 +28,7 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
-    public void MainMenu()
-    {
-        SceneManager.LoadScene("FroggerMenu");
-    }
-
-    public void UnpauseGame()
-=======
     public void ResumeGame()
->>>>>>> 90c8c377ac83838bf5897b93ff9ccddae28211f4
     {
         Time.timeScale = 1;
         Cursor.visible = false;
@@ -50,10 +41,6 @@ public class PauseMenu : MonoBehaviour
     }
     public void QuitFrogger()
     {
-<<<<<<< HEAD
-        SceneManager.LoadScene("GameMenu");
-=======
         SceneManager.LoadScene("FroggerMenu");
->>>>>>> 90c8c377ac83838bf5897b93ff9ccddae28211f4
     }
 }
