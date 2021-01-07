@@ -73,7 +73,6 @@
     <Compile Include="Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
     <None Include="Assets\Plugins\Demigiant\DOTween\readme.txt" />
     <Reference Include="Unity.Timeline.Editor">
-<<<<<<< HEAD
       <HintPath>C:/repos/Unity/ArcadeGames/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
@@ -90,24 +89,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
       <HintPath>C:/repos/Unity/ArcadeGames/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
-=======
-      <HintPath>D:/micha/ArcadeGames/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/micha/ArcadeGames/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>D:/micha/ArcadeGames/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/micha/ArcadeGames/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/micha/ArcadeGames/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>D:/micha/ArcadeGames/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
->>>>>>> 42a7a1a7f7b0bb975a9b932287a5e20b7e2606dd
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -293,7 +274,6 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.11f1/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
-<<<<<<< HEAD
       <HintPath>C:/repos/Unity/ArcadeGames/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
@@ -304,18 +284,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>C:/repos/Unity/ArcadeGames/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
-=======
-      <HintPath>D:/micha/ArcadeGames/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.Editor">
-      <HintPath>D:/micha/ArcadeGames/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>D:/micha/ArcadeGames/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>D:/micha/ArcadeGames/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
->>>>>>> 42a7a1a7f7b0bb975a9b932287a5e20b7e2606dd
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.11f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

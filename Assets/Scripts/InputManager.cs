@@ -11,7 +11,7 @@ public class InputManager : MonoBehaviour
     public static bool moveBackwards;
     public static bool moveLeft;
     public static bool moveRight;
-   
+
 
     // Update is called once per frame
     void Update()
@@ -26,12 +26,6 @@ public class InputManager : MonoBehaviour
         {
             Frogger.Instance.MoveForwards();
         }
-<<<<<<< HEAD
-
-        // SpaceInvaders controls
-        //PlayerController.Instance.Movement();
-        //PlayerController.Instance.Shoot();
-=======
         if (moveLeft)
         {
             Frogger.Instance.MoveLeft();
@@ -44,7 +38,6 @@ public class InputManager : MonoBehaviour
         {
             Frogger.Instance.MoveBackwards();
         }
->>>>>>> 42a7a1a7f7b0bb975a9b932287a5e20b7e2606dd
 
         //Pause menu keypress code here
         pause = Input.GetKey(KeyCode.Escape);
