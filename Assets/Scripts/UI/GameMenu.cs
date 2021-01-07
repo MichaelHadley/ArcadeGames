@@ -22,9 +22,15 @@ public class GameMenu : MonoBehaviour
         SceneManager.LoadScene("SpaceInvadersMenu");
     }
 
+    //Quits frogger and returns player to start menu
+    public void QuitFrogger()
+    {
+        SceneManager.LoadScene("GameMenu");
+    }
+
+    //Close down game
     public void QuitGame()
     {
-        Debug.Log("Quit");
         Application.Quit();
     }
 

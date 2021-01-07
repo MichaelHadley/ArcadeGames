@@ -30,7 +30,7 @@ public class PauseMenu : MonoBehaviour
 
     public void MainMenu()
     {
-        SceneManager.LoadScene("GameMenu");
+        SceneManager.LoadScene("FroggerMenu");
     }
 
     public void UnpauseGame()
@@ -41,7 +41,6 @@ public class PauseMenu : MonoBehaviour
     }
     public void QuidGame()
     {
-        Debug.Log("QUIT");
-        Application.Quit();
+        SceneManager.LoadScene("GameMenu");
     }
 }
