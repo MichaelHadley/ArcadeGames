@@ -11,6 +11,10 @@ public class BGMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Material mat = bgRender.material;
+        
+        mat.mainTexture.wrapMode = TextureWrapMode.Repeat;
+
         bgRender.material.mainTextureOffset += new Vector2(Time.deltaTime * bgSpeedX, Time.deltaTime * bgSpeedY);
     }
 }

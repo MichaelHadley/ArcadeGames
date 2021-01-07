@@ -11,7 +11,7 @@ public class InputManager : MonoBehaviour
     public static bool moveBackwards;
     public static bool moveLeft;
     public static bool moveRight;
-   
+
 
     // Update is called once per frame
     void Update()

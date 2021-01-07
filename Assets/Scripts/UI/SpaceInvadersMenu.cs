@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SpaceInvadersMenu : MonoBehaviour
 {
-    public void PlayGame()
+    public void PlaySpaceInvaders()
     {
         SceneManager.LoadScene("SpaceInvaders");
     }
@@ -20,7 +20,7 @@ public class SpaceInvadersMenu : MonoBehaviour
         // Open scene UI
     }
 
-    public void OnApplicationQuit()
+    public void QuitSpaceInvaders()
     {
         SceneManager.LoadScene("GameMenu");
     }
