@@ -35,8 +35,12 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
     }
 
-    public void QuitGame()
+    public void QuitSpaceInvaders()
     {
-        SceneManager.LoadScene("GameMenu");
+        SceneManager.LoadScene("SpaceInvadersMenu");
+    }
+    public void QuitFrogger()
+    {
+        SceneManager.LoadScene("FroggerMenu");
     }
 }

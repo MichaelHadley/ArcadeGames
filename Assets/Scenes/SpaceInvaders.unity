@@ -842,7 +842,7 @@ PrefabInstance:
     - target: {fileID: 3219729899895888270, guid: 73eae8b3308b99d4f814a691873c808b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: QuitGame
+      value: QuitSpaceInvaders
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73eae8b3308b99d4f814a691873c808b, type: 3}
@@ -970,7 +970,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62716fb428b45304690cad3775e5b190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveUp: 0
 --- !u!4 &2023820064
 Transform:
   m_ObjectHideFlags: 0
