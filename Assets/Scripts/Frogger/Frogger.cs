@@ -27,18 +27,17 @@ public class Frogger : MonoBehaviour
     [Header ("Player Infor")]
     public GameObject player;
     public Transform playerSpawn;
+    private GameObject playerSprite;
 
     [Header("Traffic")]
     public GameObject Truck;
     public GameObject car;
-
+    private GameObject truckSprite;
+    private GameObject carSprite;
+    
     [Header("River Items")]
     public GameObject log;
     public GameObject LilyPad;
-
-    private GameObject playerSprite;
-    private GameObject carSprite;
-    private GameObject truckSprite;
     private GameObject lilypadSprite;
     private GameObject logSprite;
     private GameObject landedOn;
