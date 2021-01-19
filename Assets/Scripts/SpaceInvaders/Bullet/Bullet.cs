@@ -54,6 +54,7 @@ public class Bullet : MonoBehaviour
             Destroy(explosion, 1f);
             Destroy(gameObject);
             Destroy(collision.gameObject);
+
         }
         else if (collision.gameObject.tag == "WorldBarrier")
         {

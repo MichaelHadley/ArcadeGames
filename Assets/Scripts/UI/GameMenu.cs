@@ -9,6 +9,7 @@ public class GameMenu : MonoBehaviour
     public void PlayFrogger()
     {
         SceneManager.LoadScene("Frogger");
+        
     }
 
     //Frogger UI in Main menu

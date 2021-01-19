@@ -156,6 +156,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpaceInvadersMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 8245644920272311736, guid: f088ae8b04a47c74fba8d0e760bcb768,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3446229702673395070, guid: f088ae8b04a47c74fba8d0e760bcb768,
+        type: 3}
+      propertyPath: audioMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 6998de5dd8f81cc4cbbf1235823b4158,
+        type: 2}
+    - target: {fileID: 6281377657638668157, guid: f088ae8b04a47c74fba8d0e760bcb768,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6281377657386912464, guid: f088ae8b04a47c74fba8d0e760bcb768,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -260,16 +276,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8245644920272311736, guid: f088ae8b04a47c74fba8d0e760bcb768,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6281377657638668157, guid: f088ae8b04a47c74fba8d0e760bcb768,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6281377659287701652, guid: f088ae8b04a47c74fba8d0e760bcb768,
         type: 3}
@@ -579,7 +585,7 @@ PrefabInstance:
     - target: {fileID: 1024851122031897899, guid: f088ae8b04a47c74fba8d0e760bcb768,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -4.9000015
+      value: -4.900009
       objectReference: {fileID: 0}
     - target: {fileID: 1024851122031897899, guid: f088ae8b04a47c74fba8d0e760bcb768,
         type: 3}
@@ -644,7 +650,7 @@ PrefabInstance:
     - target: {fileID: 3738240872114773852, guid: f088ae8b04a47c74fba8d0e760bcb768,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.9000015
+      value: -0.90000916
       objectReference: {fileID: 0}
     - target: {fileID: 1480345061458690310, guid: f088ae8b04a47c74fba8d0e760bcb768,
         type: 3}
@@ -1391,14 +1397,24 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3446229702673395070, guid: f088ae8b04a47c74fba8d0e760bcb768,
+    - target: {fileID: 6281377659287701653, guid: f088ae8b04a47c74fba8d0e760bcb768,
         type: 3}
-      propertyPath: audioMixer
-      value: 
-      objectReference: {fileID: 24100000, guid: 367411880d1751748abb9acf99bd500c,
-        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 218.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281377657638668156, guid: f088ae8b04a47c74fba8d0e760bcb768,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 750
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281377657638668156, guid: f088ae8b04a47c74fba8d0e760bcb768,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 400
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2882605997041851756, guid: f088ae8b04a47c74fba8d0e760bcb768, type: 3}
+    - {fileID: 5579329201225447717, guid: f088ae8b04a47c74fba8d0e760bcb768, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f088ae8b04a47c74fba8d0e760bcb768, type: 3}
 --- !u!1 &1930791490
 GameObject:

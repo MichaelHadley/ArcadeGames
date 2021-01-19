@@ -30,7 +30,7 @@ public class EnemyController : MonoBehaviour
     public bool Inited { get; private set; }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         Shoot();
     }

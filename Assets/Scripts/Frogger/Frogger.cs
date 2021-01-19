@@ -18,11 +18,7 @@ public class Frogger : MonoBehaviour
             return _instance;
         }
     }
-
-    public bool Inited
-    {
-        get; private set;
-    }
+    public bool Inited { get; private set; }
 
     [Header ("Player Infor")]
     public GameObject player;
