@@ -35,6 +35,7 @@ public class Frogger : MonoBehaviour
     private GameObject truckSprite;
     private GameObject carSprite;
     
+    
     [Header("River Items")]
     public GameObject log;
     public GameObject LilyPad;
@@ -166,7 +167,7 @@ public class Frogger : MonoBehaviour
                 if (laneDefinition[i] == laneType.RoadLane)
                 {
                     Traffic[curTrafficItem].transform.position = thisObjStart + new Vector3(0, laneGap * i, 0);
-                    Traffic[curTrafficItem].transform.DOMoveX(thisObjEnd.x, 20f).SetEase(Ease.Linear);
+                    Traffic[curTrafficItem].transform.DOMoveX(thisObjEnd.x, 10f).SetEase(Ease.Linear);
                     curTrafficItem++;
                     if (curTrafficItem == Traffic.Count)
                     {
@@ -177,7 +178,7 @@ public class Frogger : MonoBehaviour
                 else if (laneDefinition[i] == laneType.LogLane)
                 {
                     Logs[curLogItem].transform.position = thisObjStart + new Vector3(0, laneGap * i, 0);
-                    Logs[curLogItem].transform.DOMoveX(thisObjEnd.x, 15f).SetEase(Ease.Linear);
+                    Logs[curLogItem].transform.DOMoveX(thisObjEnd.x, 10f).SetEase(Ease.Linear);
                     curLogItem++;
                     if (curLogItem == Logs.Count)
                     {
@@ -206,6 +207,7 @@ public class Frogger : MonoBehaviour
         {
             isMoving = true;
             playerSprite.transform.DOMoveY(playerSprite.transform.position.y + laneGap, 0.5f);
+            playerLane++;
             StartCoroutine("LandingCheck");
         }
     }
@@ -215,6 +217,7 @@ public class Frogger : MonoBehaviour
         {
             isMoving = true;
             playerSprite.transform.DOMoveY(playerSprite.transform.position.y - laneGap, 0.5f);
+            playerLane--;
             StartCoroutine("LandingCheck");
         }
     }
@@ -224,7 +227,7 @@ public class Frogger : MonoBehaviour
         {
             isMoving = true;
             playerSprite.transform.DOMoveX(playerSprite.transform.position.x + laneGap, 0.5f);
-            StartCoroutine("LandingCheck");
+            StartCoroutine("WaitForMovement");
         }
     }
     public void MoveLeft()
@@ -233,19 +236,27 @@ public class Frogger : MonoBehaviour
         {
             isMoving = true;
             playerSprite.transform.DOMoveX(playerSprite.transform.position.x - laneGap, 0.5f);
-            StartCoroutine("LandingCheck");
+            StartCoroutine("WaitForMovement");
         }
     }
 
-    IEnumerator LandingCheck()
+    IEnumerator WaitForMovement()
     {
-        yield return new WaitForSeconds(0.25f); //time to wait between movements
-        playerLane++;
+        yield return new WaitForSeconds(0.5f); //time to wait between movements
+        //playerLane++;
         isMoving = false;
-        if(playerLane == numOfLanes)
+    }
+        IEnumerator LandingCheck()
+    {
+        yield return new WaitForSeconds(0.5f); //time to wait between movements
+        //playerLane++;
+        isMoving = false;
+        if(laneDefinition[playerLane] == laneType.EndLane)
         {
             //TODO
             //end game
+            DOTween.KillAll();
+            FindObjectOfType<GameManager>().EndGame();
         }
         //only for water lanes do we need to check if landed on object
         if(laneDefinition[playerLane] == laneType.LilyPadLane)
