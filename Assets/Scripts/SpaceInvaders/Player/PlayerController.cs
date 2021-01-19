@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("Player variables")]
-    public GameObject Player;
+    public GameObject player;
     public float moveSpeed;
     public Rigidbody2D rb;
     
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private float fireCoolDown;
     private Vector2 movement;
 
-    public static PlayerController _instance;
+    private static PlayerController _instance;
     public static PlayerController Instance
     {
         get

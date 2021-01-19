@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    public static bool pause;
-    public static bool unpause;
+    //public static bool pause;
+    //public static bool unpause;
 
     public static bool moveForwards;
     public static bool moveBackwards;
@@ -39,7 +39,7 @@ public class InputManager : MonoBehaviour
             Frogger.Instance.MoveBackwards();
         }
 
-        //Pause menu keypress code here
-        pause = Input.GetKey(KeyCode.Escape);
+        ////Pause menu keypress code here
+        //pause = Input.GetKey(KeyCode.Escape);
     }
 }
