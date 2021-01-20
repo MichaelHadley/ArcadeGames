@@ -65,8 +65,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Frogger\Frogger.cs" />
+<<<<<<< HEAD
+    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\InputManager.cs" />
+=======
     <Compile Include="Assets\Scripts\GameManagement\InputManager.cs" />
     <Compile Include="Assets\Scripts\GameManagement\SoundManager.cs" />
+>>>>>>> 3dd14edd2f89d8c1227e1566815d68d41a0df4a1
     <Compile Include="Assets\Scripts\SpaceInvaders\Backgrounnd\BGMovement.cs" />
     <Compile Include="Assets\Scripts\SpaceInvaders\Bullet\Bullet.cs" />
     <Compile Include="Assets\Scripts\SpaceInvaders\Bullet\EnemyBullet.cs" />
