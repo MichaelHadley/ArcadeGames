@@ -7,6 +7,9 @@ TagManager:
   - Ground
   - Enemy
   - WorldBarrier
+  - Shield
+  - EnemyBullet
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX
@@ -19,8 +22,8 @@ TagManager:
   - Ground
   - Player
   - Enemy
-  - 
-  - 
+  - Bullet
+  - EnemyBullet
   - 
   - 
   - 

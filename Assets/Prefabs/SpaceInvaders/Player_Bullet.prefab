@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6203918971751874847}
   - component: {fileID: 672028460072194019}
-  - component: {fileID: 509460305269205545}
-  - component: {fileID: 7685511591063192320}
+  - component: {fileID: -7561424972902457019}
+  - component: {fileID: 3035233365989080498}
   - component: {fileID: 5881276588446710927}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Player_Bullet
-  m_TagString: Untagged
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &509460305269205545
+--- !u!50 &-7561424972902457019
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -92,18 +92,18 @@ Rigidbody2D:
   m_GameObject: {fileID: 446847155466835990}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &7685511591063192320
+--- !u!61 &3035233365989080498
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,7 +113,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -142,5 +142,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletType: 0
-  hitEffect: {fileID: 1959203756962942, guid: 6f29120d40ebb4b4894071bd84225ab1, type: 3}
   bulletSpeed: 5
+  explodedShipImage: {fileID: -2885940107258461023, guid: 5f2a893787836204e95379fb7efe637a,
+    type: 3}
