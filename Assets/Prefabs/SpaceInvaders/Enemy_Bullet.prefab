@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6203918971751874847}
   - component: {fileID: 672028460072194019}
   - component: {fileID: 7685511591063192320}
+  - component: {fileID: 578474691474251508}
   - component: {fileID: -1797949462615496922}
   m_Layer: 12
   m_Name: Enemy_Bullet
@@ -107,6 +108,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &578474691474251508
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446847155466835990}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &-1797949462615496922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,5 +143,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletType: 1
   bulletSpeed: 5
-  explodedShipImage: {fileID: 8463096131581357343, guid: 5f2a893787836204e95379fb7efe637a,
-    type: 3}
+  explodedShipImage: {fileID: 21300000, guid: b409ae9e04823104994aa373b56eabdb, type: 3}

@@ -8,7 +8,7 @@ public class EnemyManager : MonoBehaviour
     public bool moveDown;
     public int direction = 1;
 
-    public int numOfEnemies = 10;
+    public int numOfEnemies = 50;
     public float speedMultiplier = 1f;
 
     private static EnemyManager _instance;
@@ -44,18 +44,22 @@ public class EnemyManager : MonoBehaviour
             moveDown = false;
         }
 
+        // Increase movement speed of enemies by multiplier is numOfEnemies is less than the value
         if (numOfEnemies < 2)
         {
             speedMultiplier = 10f;
         }
-        else if (numOfEnemies < 4)
+        else if (numOfEnemies < 5)
         {
             speedMultiplier = 5f;
         }
-        else if (numOfEnemies < 5)
+        else if (numOfEnemies < 10)
         {
             speedMultiplier = 2f;
         }
-
+        else if (numOfEnemies < 20)
+        {
+            speedMultiplier = 1.5f;
+        }
     }
 }
