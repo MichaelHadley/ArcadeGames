@@ -7,6 +7,10 @@ TagManager:
   - Ground
   - Enemy
   - WorldBarrier
+  - Vehicle
+  - platform
+  - Water
+  - Goal
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
@@ -39,21 +37,12 @@ public class PauseMenu : MonoBehaviour
         else
         {
             // Need to use button released before updating game is paused so that holding key down for a long time only classes as one press
-            if(!buttonReleased)
+            if (!buttonReleased)
             {
                 buttonReleased = true;
                 GameIsPaused = !GameIsPaused;
             }
         }
-
-
-        //if (InputManager.unpause)
-        //{
-        //    Time.timeScale = 1;
-        //    Cursor.visible = false;
-        //    pauseMenu.SetActive(false);
-
-        //}
     }
 
     public void ResumeGame()

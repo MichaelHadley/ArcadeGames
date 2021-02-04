@@ -20,10 +20,10 @@ public class Frogger : MonoBehaviour
     }
     public bool Inited { get; private set; }
 
-    [Header ("Player Infor")]
-    public GameObject player;
+    [Header ("Player Info")]
+    //public GameObject player;
     public Transform playerSpawn;
-    private GameObject playerSprite;
+    public GameObject playerSprite;
 
     [Header("Traffic")]
     public GameObject Truck;
@@ -33,7 +33,7 @@ public class Frogger : MonoBehaviour
     
     
     [Header("River Items")]
-    public GameObject log;
+    public GameObject Log;
     public GameObject LilyPad;
     private GameObject lilypadSprite;
     private GameObject logSprite;
@@ -44,6 +44,7 @@ public class Frogger : MonoBehaviour
     public Transform objEnd;
     public Transform objStart2;
     public Transform objEnd2;
+
 
     [Header("Lists")]
     private List<GameObject> Traffic = new List<GameObject>();
@@ -69,8 +70,8 @@ public class Frogger : MonoBehaviour
         EndLane,
         MAX
     }
-
-    private int playerLane;
+    
+    public int playerLane;
     private bool isMoving;
 
     // Start is called before the first frame update
@@ -112,7 +113,7 @@ public class Frogger : MonoBehaviour
         //River Objects spawn
         for (int i = 0; i < 20; i++)
         {
-            logSprite = Instantiate(log, objEnd.position, Quaternion.identity);
+            logSprite = Instantiate(Log, objEnd.position, Quaternion.identity);
             Logs.Add(logSprite);
 
         }
@@ -122,7 +123,9 @@ public class Frogger : MonoBehaviour
             LilyPads.Add(lilypadSprite);
         }
         
-        playerSprite = Instantiate(player, playerSpawn.position, Quaternion.identity);
+        //playerSprite = Instantiate(player, playerSpawn.position, Quaternion.identity);
+        playerSprite.transform.position = playerSpawn.position;
+
 
         for (int i = 0; i < numOfLanes; i++)
         {
@@ -202,7 +205,7 @@ public class Frogger : MonoBehaviour
         if (!isMoving)
         {
             isMoving = true;
-            playerSprite.transform.DOMoveY(playerSprite.transform.position.y + laneGap, 0.5f);
+            playerSprite.transform.DOMoveY(playerSprite.transform.position.y + laneGap, 0.2f);
             playerLane++;
             StartCoroutine("LandingCheck");
         }
@@ -211,49 +214,52 @@ public class Frogger : MonoBehaviour
     {
         if (!isMoving)
         {
-            isMoving = true;
-            playerSprite.transform.DOMoveY(playerSprite.transform.position.y - laneGap, 0.5f);
-            playerLane--;
-            StartCoroutine("LandingCheck");
+            if(playerLane > 0)
+            {
+                isMoving = true;
+                playerSprite.transform.DOMoveY(playerSprite.transform.position.y - laneGap, 0.2f);
+                playerLane--;
+                StartCoroutine("LandingCheck");
+            }
         }
     }
     public void MoveRight()
     {
         if (!isMoving)
         {
-            isMoving = true;
-            playerSprite.transform.DOMoveX(playerSprite.transform.position.x + laneGap, 0.5f);
-            StartCoroutine("WaitForMovement");
+            //this gets the player position reletive to the screen view with the screen x value going from 0 to 1, stops the player going off screen
+            Vector3 playerRelPos = Camera.main.WorldToViewportPoint(playerSprite.transform.GetChild(1).transform.position + new Vector3(laneGap,0,0));
+            if (playerRelPos.x < 1f)
+            {
+                isMoving = true;
+                playerSprite.transform.DOMoveX(playerSprite.transform.position.x + laneGap, 0.2f);
+                StartCoroutine("LandingCheck");
+            }
         }
     }
     public void MoveLeft()
     {
         if (!isMoving)
         {
-            isMoving = true;
-            playerSprite.transform.DOMoveX(playerSprite.transform.position.x - laneGap, 0.5f);
-            StartCoroutine("WaitForMovement");
+            //this gets the player position reletive to the screen view with the screen x value going from 0 to 1, stops the player going off screen
+            Vector3 playerRelPos = Camera.main.WorldToViewportPoint(playerSprite.transform.GetChild(0).transform.position - new Vector3(laneGap, 0, 0));
+            if (playerRelPos.x > 0)
+            { 
+                isMoving = true;
+                playerSprite.transform.DOMoveX(playerSprite.transform.position.x - laneGap, 0.2f);
+                StartCoroutine("LandingCheck");
+            }
         }
     }
 
-    IEnumerator WaitForMovement()
+    IEnumerator LandingCheck()
     {
-        yield return new WaitForSeconds(0.5f); //time to wait between movements
+        yield return new WaitForSeconds(0.2f); //time to wait between movements
         //playerLane++;
         isMoving = false;
-    }
-        IEnumerator LandingCheck()
-    {
-        yield return new WaitForSeconds(0.5f); //time to wait between movements
-        //playerLane++;
-        isMoving = false;
-        if(laneDefinition[playerLane] == laneType.EndLane)
-        {
-            //TODO
-            //end game
-            DOTween.KillAll();
-            FindObjectOfType<GameManager>().EndGame();
-        }
+        landedOn = null;
+        playerSprite.transform.parent = null;
+                
         //only for water lanes do we need to check if landed on object
         if(laneDefinition[playerLane] == laneType.LilyPadLane)
         {
@@ -261,10 +267,10 @@ public class Frogger : MonoBehaviour
             //Add lilypad gameobject to LandedOn variable
             foreach(GameObject curlilypad in LilyPads)
             {
-                if(player.transform.position.y == curlilypad.transform.position.y)
+                if(Mathf.Round(playerSprite.transform.position.y) == Mathf.Round(curlilypad.transform.position.y))
                 {
-                    if (player.transform.position.x > curlilypad.transform.GetChild(0).transform.position.x
-                        && player.transform.position.x < curlilypad.transform.GetChild(1).transform.position.x)
+                    if (playerSprite.transform.position.x > curlilypad.transform.GetChild(0).transform.position.x
+                        && playerSprite.transform.position.x < curlilypad.transform.GetChild(1).transform.position.x)
                     {
                         landedOn = curlilypad;
                     }
@@ -273,7 +279,35 @@ public class Frogger : MonoBehaviour
         }
         else if (laneDefinition[playerLane] == laneType.LogLane)
         {
-
+            foreach (GameObject curLog in Logs)
+            {
+                if (Mathf.Round(playerSprite.transform.position.y) == Mathf.Round(curLog.transform.position.y))
+                {
+                    if (playerSprite.transform.position.x > curLog.transform.GetChild(0).transform.position.x
+                        && playerSprite.transform.position.x < curLog.transform.GetChild(1).transform.position.x)
+                    {
+                        landedOn = curLog;
+                    }
+                }
+            }
         }
+
+        if (laneDefinition[playerLane] == laneType.LogLane || laneDefinition[playerLane] == laneType.LilyPadLane)
+        {
+            if (landedOn)
+            {
+                //update to say landed on something
+                playerSprite.transform.parent = landedOn.transform;
+            }
+            else
+            {
+                //player is dead
+                FroggerManager.Instance.Death();
+            }
+        }
+
+        //landingPad: update if player has landed in between the childern and turn on the occupied gameobject
+        // if occupied gameobject is on and the player lands kill the player
     }
+    
 }
