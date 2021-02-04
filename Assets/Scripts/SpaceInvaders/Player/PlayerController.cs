@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         Vector3 playerRelPos = Camera.main.WorldToViewportPoint(transform.position);
         if (playerRelPos.x < 0f || playerRelPos.x > 1)
         {
-            FroggerManager.Instance.Death();
+            //FroggerManager.Instance.Death();
         }
     }
 
@@ -74,6 +74,9 @@ public class PlayerController : MonoBehaviour
             // Create bullet
             GameObject bullet = Instantiate(bulletPrefab, transform.position + offset, Quaternion.identity);
             bullet.layer = gameObject.layer;
+
+            // Play One Shot Audio
+            SoundManager.Instance.PlayOneShot(SoundManager.Instance.playerBullet);
         }
     }
 }
