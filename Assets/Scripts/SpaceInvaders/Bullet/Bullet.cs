@@ -89,21 +89,32 @@ public class Bullet : MonoBehaviour
 
             // Initiate explosion spite
             collision.GetComponent<SpriteRenderer>().sprite = explodedShipImage;
-
-            // Destroy bullet
-            Destroy(gameObject);
-
+         
             // Destroy explosion after 0.5 of a second
             Destroy(collision.gameObject, 0.5f);
 
-            // Destroy player
-            Destroy(collision.gameObject, 0.5f);
+            // Destroy bullet
+            Destroy(gameObject);
         }
         // Destroy bullet and shield when collision occurs
         else if (collision.gameObject.tag == "Shield")
         {
+            collision.GetComponent<Shield>().shieldHealth--;
+
+            if (collision.GetComponent<Shield>().shieldHealth == 2)
+            {
+                collision.GetComponent<SpriteRenderer>().sprite = collision.GetComponent<Shield>().damageOne;
+            }
+            else if (collision.GetComponent<Shield>().shieldHealth == 1)
+            {
+                collision.GetComponent<SpriteRenderer>().sprite = collision.GetComponent<Shield>().damageTwo;
+            }
+            else
+            {
+                Destroy(collision.gameObject);
+            }
+
             Destroy(gameObject);
-            Destroy(collision.gameObject);
         }
         // Destroy bullet if it collides with the world barrier
         else if (collision.gameObject.tag == "WorldBarrier")

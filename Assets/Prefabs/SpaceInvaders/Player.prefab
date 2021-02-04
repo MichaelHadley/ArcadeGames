@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8784621786946882675}
   m_Layer: 9
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3087858045291071359}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children:
   - {fileID: 4422416244912162965}
   m_Father: {fileID: 0}
@@ -72,12 +72,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: ca3da892d7094d14a9543dd8e5a42194, type: 3}
-  m_Color: {r: 0.082013145, g: 0.9150943, b: 0.2577706, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 6c361c984ebe23847827ca64b4e05a20, type: 3}
+  m_Color: {r: 0.16470587, g: 0.8509804, b: 0.20410408, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.12, y: 0.07}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -116,13 +116,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffadd5264b182a8478803c9e84ac6f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 3087858045291071359}
   moveSpeed: 5
   rb: {fileID: 3087858045291071345}
   bulletPrefab: {fileID: 446847155466835990, guid: a87a444bb1d3d9947a75dc1078119e1e,
     type: 3}
   bulletOffset: {x: 0, y: 1, z: 0}
-  fireRate: 0.25
+  fireRate: 0.5
 --- !u!61 &8784621786946882675
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -140,14 +140,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.56, y: 1.87}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 12, y: 7}
+    newSize: {x: 0.12, y: 0.07}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.56, y: 1.87}
+  m_Size: {x: 0.12, y: 0.07}
   m_EdgeRadius: 0
 --- !u!1 &9201997610596906749
 GameObject:

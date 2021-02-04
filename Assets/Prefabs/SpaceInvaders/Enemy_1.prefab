@@ -71,8 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 8338736988281241674, guid: 5f2a893787836204e95379fb7efe637a,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 144ec8f82ef0699459b054191fe14d27, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,14 +99,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 16, y: 10}
+    oldSize: {x: 12, y: 8}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.721054, y: 10}
+  m_Size: {x: 12, y: 8}
   m_EdgeRadius: 0
 --- !u!50 &3684841824387167059
 Rigidbody2D:
@@ -149,9 +148,7 @@ MonoBehaviour:
   fireRateWaitTime: 3
   speed: 1
   secBeforeSpriteChange: 0.5
-  startingImage: {fileID: 8338736988281241674, guid: 5f2a893787836204e95379fb7efe637a,
-    type: 3}
-  altImage: {fileID: -2776934763770595325, guid: 5f2a893787836204e95379fb7efe637a,
-    type: 3}
-  explodedShipImage: {fileID: 8463096131581357343, guid: 5f2a893787836204e95379fb7efe637a,
-    type: 3}
+  startingImage: {fileID: 21300000, guid: 144ec8f82ef0699459b054191fe14d27, type: 3}
+  altImage: {fileID: 21300000, guid: 17d5d1b74d205fa4e9a57fd9d14491c0, type: 3}
+  explodedShipImage: {fileID: 21300000, guid: 87587c07675f04347b1c014cccc895d0, type: 3}
+  isDead: 0

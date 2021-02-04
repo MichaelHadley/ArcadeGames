@@ -45,7 +45,8 @@ public class EnemyController : MonoBehaviour
         Vector3 pos = transform.position;
 
         Vector3 velocity = new Vector3(speed * EnemyManager.Instance.speedMultiplier 
-            * EnemyManager.Instance.direction * Time.deltaTime, 0, 0);
+                                             * EnemyManager.Instance.direction 
+                                             * Time.deltaTime, 0, 0);
 
         pos += velocity;
 
@@ -53,7 +54,7 @@ public class EnemyController : MonoBehaviour
 
         if (EnemyManager.Instance.moveDown)
         {
-            transform.DOMoveY(pos.y -1.5f, 0.5f);
+            transform.DOMoveY(pos.y - 1.5f, .5f).SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
     }
 
@@ -98,7 +99,7 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
 
             // Wait .5 seconds and then destroy Player
-            Destroy(collision.gameObject, 0.5f);
+            Destroy(collision.gameObject, 5f);
         }
     }
 

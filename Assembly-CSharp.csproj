@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\SpaceInvaders\Enemy\EnemyController.cs" />
     <Compile Include="Assets\Scripts\SpaceInvaders\Enemy\EnemyManager.cs" />
     <Compile Include="Assets\Scripts\SpaceInvaders\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\SpaceInvaders\Shield.cs" />
     <Compile Include="Assets\Scripts\UI\GameMenu.cs" />
     <Compile Include="Assets\Scripts\UI\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\UI\SettingsMenu.cs" />

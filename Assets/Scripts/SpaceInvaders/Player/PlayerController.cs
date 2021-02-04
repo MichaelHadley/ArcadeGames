@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
 
     private float fireCoolDown;
     private Vector2 movement;
+    private int numOfLives = 3;
+
 
     private static PlayerController _instance;
     public static PlayerController Instance
@@ -36,6 +38,16 @@ public class PlayerController : MonoBehaviour
     {
         Movement();
         Shoot();
+        DestroyOffScreen();
+    }
+
+    private void DestroyOffScreen()
+    {
+        Vector3 playerRelPos = Camera.main.WorldToViewportPoint(transform.position);
+        if (playerRelPos.x < 0f || playerRelPos.x > 1)
+        {
+            FroggerManager.Instance.Death();
+        }
     }
 
     private void FixedUpdate()
