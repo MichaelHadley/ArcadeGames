@@ -7,10 +7,16 @@ TagManager:
   - Ground
   - Enemy
   - WorldBarrier
+<<<<<<< HEAD
   - Vehicle
   - platform
   - Water
   - Goal
+=======
+  - Shield
+  - EnemyBullet
+  - PlayerBullet
+>>>>>>> 78e9e3b78d99a6af7ae66a19cc93b6833d32f801
   layers:
   - Default
   - TransparentFX
@@ -23,8 +29,8 @@ TagManager:
   - Ground
   - Player
   - Enemy
-  - 
-  - 
+  - Bullet
+  - EnemyBullet
   - 
   - 
   - 
