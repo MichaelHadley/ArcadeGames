@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -57,6 +58,7 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
         buttonReleased = true;
         ResumeGame();
+        DOTween.KillAll();
         SceneManager.LoadScene("SpaceInvadersMenu");
     }
     public void QuitFrogger()
@@ -64,6 +66,7 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
         buttonReleased = true;
         ResumeGame();
+        DOTween.KillAll();
         SceneManager.LoadScene("FroggerMenu");
     }
 }

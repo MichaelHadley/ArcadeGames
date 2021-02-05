@@ -1,10 +1,19 @@
 ﻿using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class FroggerManager : MonoBehaviour
 {
     public GameObject LevelCompleteCanvas;
+
+    public GameObject lifeOne;
+    public GameObject lifeTwo;
+    public GameObject lifeThree;
+
+    public TextMeshProUGUI score;
+   // public GameObject Score;
 
     public GameObject GameOverCanvas;
     public GameObject Player;
@@ -27,8 +36,9 @@ public class FroggerManager : MonoBehaviour
     public bool Inited { get; private set; }
 
     private int lives = 3;
-    //private int points = 0;
+    public int points = 0;
     private int frogAtEnd = 0;
+
 
     public void Update()
     {
@@ -43,8 +53,23 @@ public class FroggerManager : MonoBehaviour
                 Player.transform.parent = null;
                 Player.transform.position = GetComponent<Frogger>().playerSpawn.position;
                 GetComponent<Frogger>().playerLane = 0;
+                GetComponent<Frogger>().maxPlayerLane = 0;
                 Player.transform.DOKill();
             }
+        }
+    }
+
+    public void AwardPoints(string reason)
+    {
+        if(reason == "laneProgress")
+        {
+            points += 10;
+            score.text = points + " ";
+        }
+        else if(reason == "Goal")
+        {
+            points += 100;
+            score.text = points + " ";
         }
     }
 
@@ -64,6 +89,20 @@ public class FroggerManager : MonoBehaviour
             stopped = true;
             Time.timeScale = 0;
         }
+
+        if (lives == 2)
+        {
+            lifeThree.SetActive(false);
+        }
+        else if(lives == 1)
+        {
+            lifeTwo.SetActive(false);
+        }
+        else if (lives == 0)
+        {
+            lifeOne.SetActive(false);
+        }
+
     }
   
     public void Goal()
@@ -72,7 +111,9 @@ public class FroggerManager : MonoBehaviour
         //score points for how long it takes to get across
         frogAtEnd++;
         Debug.Log("Goal");
-        if(frogAtEnd == 4)
+
+        AwardPoints("Goal");
+        if (frogAtEnd == 4)
         {
             gameHasEnded = true;
             Debug.Log("Level Won");
@@ -89,6 +130,7 @@ public class FroggerManager : MonoBehaviour
             Player.transform.parent = null;
             Player.transform.position = GetComponent<Frogger>().playerSpawn.position;
             GetComponent<Frogger>().playerLane = 0;
+            GetComponent<Frogger>().maxPlayerLane = 0;
             Player.transform.DOKill();
         }
     }
