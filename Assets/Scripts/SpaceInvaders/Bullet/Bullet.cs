@@ -73,26 +73,36 @@ public class Bullet : MonoBehaviour
 
             EnemyManager.Instance.numOfEnemies--;
 
+            string enemyKilled = "Enemy" + collision.GetComponent<EnemyController>().scoreValue.ToString();
+
+            GameManager.Instance.ScoreFunction(enemyKilled);
+
             // Destroy explosion after 0.5 of a second
             Destroy(collision.gameObject, .5f);
 
             // Destroy bullet
             Destroy(gameObject);
-
-            // Call function to increase score when enemy is destroyed
-            //IncreaseTextUIScore();
         }
         else if (collision.gameObject.tag == "Player" && bulletType == BulletType.enemy)
         {
-            // Play explosion sound effect when hit
-            SoundManager.Instance.PlayOneShot(SoundManager.Instance.shipExplosion);
+            if (collision.GetComponent<PlayerController>().shield == false)
+            {
+                // Play explosion sound effect when hit
+                SoundManager.Instance.PlayOneShot(SoundManager.Instance.shipExplosion);
 
-            // Initiate explosion spite
-            collision.GetComponent<SpriteRenderer>().sprite = explodedShipImage;
-         
-            // Destroy explosion after 0.5 of a second
-            Destroy(collision.gameObject, 0.5f);
+                // Initiate explosion spite
+                collision.GetComponent<SpriteRenderer>().sprite = explodedShipImage;
 
+                collision.GetComponent<PlayerController>().shield = true;
+
+                collision.GetComponent<PlayerController>().shieldProgress = 0f;
+                
+                // Destroy explosion after 0.5 of a second
+                Destroy(collision.gameObject, 0.5f);
+
+                GameManager.Instance.PlayerDeath();
+            }
+            
             // Destroy bullet
             Destroy(gameObject);
         }
@@ -122,17 +132,6 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    //void IncreaseTextUIScore()
-    //{
-    //    var textUI = GameObject.Find("Score").GetComponent<Text>();
-
-    //    int score = int.Parse(textUI.text);
-
-    //    score += 10;
-
-    //    textUI.text = score.ToString();
-    //}
 
     private void OnBecameInvisible()
     {

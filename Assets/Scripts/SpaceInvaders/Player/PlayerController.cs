@@ -6,9 +6,15 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Player variables")]
     public GameObject player;
-    public float moveSpeed;
     public Rigidbody2D rb;
-    
+    public float moveSpeed;
+    public float shieldProgress;
+    public float shieldDuration;
+    public bool shield = true;
+
+    [Header("Sprites")]
+    public Sprite playerSprite;
+
     [Header("Bullet variables")]
     public GameObject bulletPrefab;
     public Vector3 bulletOffset;
@@ -16,8 +22,7 @@ public class PlayerController : MonoBehaviour
 
     private float fireCoolDown;
     private Vector2 movement;
-    private int numOfLives = 3;
-
+    private SpriteRenderer spriteRenderer;
 
     private static PlayerController _instance;
     public static PlayerController Instance
@@ -39,6 +44,18 @@ public class PlayerController : MonoBehaviour
         Movement();
         Shoot();
         DestroyOffScreen();
+
+        shieldProgress += Time.deltaTime / shieldDuration;
+
+        if (shieldProgress >= 1)
+        {
+            if (shield == true)
+            {
+                spriteRenderer = GetComponent<SpriteRenderer>();
+                spriteRenderer.sprite = playerSprite;
+                shield = false;
+            }
+        }
     }
 
     private void DestroyOffScreen()
@@ -46,7 +63,7 @@ public class PlayerController : MonoBehaviour
         Vector3 playerRelPos = Camera.main.WorldToViewportPoint(transform.position);
         if (playerRelPos.x < 0f || playerRelPos.x > 1)
         {
-            //FroggerManager.Instance.Death();
+            Destroy(gameObject);
         }
     }
 

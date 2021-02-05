@@ -59,6 +59,7 @@ public class PauseMenu : MonoBehaviour
         ResumeGame();
         SceneManager.LoadScene("SpaceInvadersMenu");
     }
+
     public void QuitFrogger()
     {
         GameIsPaused = false;

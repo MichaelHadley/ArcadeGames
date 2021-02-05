@@ -92,7 +92,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 2024821695987685249}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 1
+  m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -152,3 +152,4 @@ MonoBehaviour:
   altImage: {fileID: 21300000, guid: 0e09298d717d76e4096f405acf6b1de0, type: 3}
   explodedShipImage: {fileID: 21300000, guid: 87587c07675f04347b1c014cccc895d0, type: 3}
   isDead: 0
+  scoreValue: 30
