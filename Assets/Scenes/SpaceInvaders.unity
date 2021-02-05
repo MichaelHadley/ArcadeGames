@@ -580,7 +580,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74fc71c592dff6d4c95bd06fe721d268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgSpeedX: 0
   bgSpeedY: 0.05
   bgRender: {fileID: 301322705}
 --- !u!1 &730294934

@@ -65,9 +65,14 @@ public class EnemyController : MonoBehaviour
         {
             if (!isDead)
             {
+                // Set enemy rate of fire
                 fireRateWaitTime = Time.time + Random.Range(minFireRateTime, maxFireRateTime);
 
+                // Create bullet
                 Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+
+                // Play bullet audio when shot
+                SoundManager.Instance.PlayOneShot(SoundManager.Instance.enemyBullet);
             }
         }
     }
@@ -99,7 +104,7 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
 
             // Wait .5 seconds and then destroy Player
-            Destroy(collision.gameObject, 5f);
+            Destroy(collision.gameObject, 0.5f);
         }
     }
 

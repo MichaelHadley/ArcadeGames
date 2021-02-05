@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BGMovement : MonoBehaviour
 {
-    public float bgSpeedX;
+    //public float bgSpeedX;
     public float bgSpeedY;
     public Renderer bgRender;
 
@@ -15,6 +15,6 @@ public class BGMovement : MonoBehaviour
         
         mat.mainTexture.wrapMode = TextureWrapMode.Repeat;
 
-        bgRender.material.mainTextureOffset += new Vector2(Time.deltaTime * bgSpeedX, Time.deltaTime * bgSpeedY);
+        bgRender.material.mainTextureOffset += new Vector2(0, bgSpeedY * Time.deltaTime);
     }
 }

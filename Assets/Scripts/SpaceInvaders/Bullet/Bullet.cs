@@ -74,7 +74,7 @@ public class Bullet : MonoBehaviour
             EnemyManager.Instance.numOfEnemies--;
 
             // Destroy explosion after 0.5 of a second
-            Destroy(collision.gameObject, 0.5f);
+            Destroy(collision.gameObject, .5f);
 
             // Destroy bullet
             Destroy(gameObject);
