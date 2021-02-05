@@ -72,6 +72,7 @@ public class Frogger : MonoBehaviour
     }
     
     public int playerLane;
+    public int maxPlayerLane;
     private bool isMoving;
 
     // Start is called before the first frame update
@@ -298,11 +299,26 @@ public class Frogger : MonoBehaviour
             {
                 //update to say landed on something
                 playerSprite.transform.parent = landedOn.transform;
+                if(playerLane > maxPlayerLane)
+                {
+                    maxPlayerLane = playerLane;
+                    FroggerManager.Instance.AwardPoints("laneProgress");
+                }
             }
             else
             {
                 //player is dead
                 FroggerManager.Instance.Death();
+            }
+        }
+        else
+        {
+            //if landed in a lane and survive add points
+            if (playerLane > maxPlayerLane)
+            {
+                maxPlayerLane = playerLane;
+                //call add  points for lane progress
+                FroggerManager.Instance.AwardPoints("laneProgress");
             }
         }
 

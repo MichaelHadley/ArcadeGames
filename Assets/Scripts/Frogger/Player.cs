@@ -8,8 +8,8 @@ public class Player : MonoBehaviour
         FroggerManager.Instance.Player = gameObject;
     }
 
-    // Update is called once per frame
-    void Update()
+    // FixedUpdate is called once per frame unless the game is paused(timescale = 0)
+    void FixedUpdate()
     {
         //If the player goes out of the cameras view kill the player
         Vector3 playerRelPos = Camera.main.WorldToViewportPoint(transform.position);
