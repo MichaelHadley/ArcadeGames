@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+
 using TMPro;
+using System.IO;
 
 public class FroggerManager : MonoBehaviour
 {
@@ -12,13 +13,15 @@ public class FroggerManager : MonoBehaviour
     public GameObject lifeTwo;
     public GameObject lifeThree;
 
-    public TextMeshProUGUI score;
-   // public GameObject Score;
+    public TextMeshProUGUI score, highScoreText, GameOverScore;
+
 
     public GameObject GameOverCanvas;
     public GameObject Player;
     private float stopProgress;
     private bool stopped;
+
+    string FilePath = "Assets/Resources/FroggerHighScore.txt";
 
     private static FroggerManager _instance;
     public static FroggerManager Instance
@@ -36,10 +39,25 @@ public class FroggerManager : MonoBehaviour
     public bool Inited { get; private set; }
 
     private int lives = 3;
-    public int points = 0;
+    public int Scored;
+    public int highScore;
     private int frogAtEnd = 0;
 
-
+    private void Start()
+    {
+        if (File.Exists(FilePath))
+        {
+            //Write some text to the test.txt file
+            StreamReader reader = new StreamReader(FilePath);
+            string tmp = reader.ReadLine();
+            highScore = int.Parse(tmp);
+            reader.Close();
+        }
+        else 
+        {
+            highScore = 0;
+        }
+    }
     public void Update()
     {
         if (stopped)
@@ -63,14 +81,31 @@ public class FroggerManager : MonoBehaviour
     {
         if(reason == "laneProgress")
         {
-            points += 10;
-            score.text = points + " ";
+            Scored += 10;
+            score.text = Scored + " ";
+            GameOverScore.text = Scored + " ";
+            UpdateHighScore();
         }
         else if(reason == "Goal")
         {
-            points += 100;
-            score.text = points + " ";
+            Scored += 100;
+            score.text = Scored + " ";
+            GameOverScore.text = Scored + " ";
+            UpdateHighScore();
         }
+    }
+
+    public void UpdateHighScore()
+    {
+        if (Scored > highScore)
+        {
+            highScore = Scored;
+
+        }
+            highScoreText.text = highScore.ToString();
+
+            PlayerPrefs.SetInt("HighScore", highScore);
+        
     }
 
     public void Death()
@@ -82,6 +117,14 @@ public class FroggerManager : MonoBehaviour
 
         if(lives == 0)
         {
+            //Write some text to the test.txt file
+            if(Scored >= highScore)
+            {
+                StreamWriter writer = new StreamWriter(FilePath, false);
+                writer.WriteLine(Scored.ToString());
+                writer.Close();
+            }
+            
             EndGame();
         }
         else
@@ -155,7 +198,11 @@ public class FroggerManager : MonoBehaviour
     void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //Time.timeScale = 1f;
+        //Player.transform.position = GetComponent<Frogger>().playerSpawn.position;
+        //Frogger.Instance.ObjectMovement();
         lives = 3;
+        PlayerPrefs.SetInt("HighScore", highScore);
     }
 
     public void PlayAgain()

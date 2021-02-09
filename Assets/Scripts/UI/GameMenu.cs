@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class GameMenu : MonoBehaviour
 { 
@@ -16,6 +17,12 @@ public class GameMenu : MonoBehaviour
         SceneManager.LoadScene("FroggerMenu");
     }
 
+    public void ResetFroggerHighScore()
+    {
+        StreamWriter writer = new StreamWriter("Assets/Resources/FroggerHighScore.txt", false);
+        writer.WriteLine("0");
+        writer.Close();
+    }
 
     public void QuitFrogger()
     {
