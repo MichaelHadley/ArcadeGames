@@ -5246,6 +5246,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: QuitFrogger
       objectReference: {fileID: 0}
+    - target: {fileID: 7307515254119251899, guid: 73eae8b3308b99d4f814a691873c808b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3219729898054926508, guid: 73eae8b3308b99d4f814a691873c808b,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -5310,11 +5315,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307515254119251899, guid: 73eae8b3308b99d4f814a691873c808b,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73eae8b3308b99d4f814a691873c808b, type: 3}

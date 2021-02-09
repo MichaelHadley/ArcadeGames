@@ -5,6 +5,21 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    private static EnemyController _instance;
+    public static EnemyController Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<EnemyController>();
+                _instance.Inited = false;
+            }
+            return _instance;
+        }
+    }
+    public bool Inited { get; private set; }
+
     public GameObject bulletPrefab;
 
     [Header("Fire Rate Values")]
@@ -20,8 +35,10 @@ public class EnemyController : MonoBehaviour
     public Sprite startingImage;
     public Sprite altImage;
     public Sprite explodedShipImage;
-
+    
+    [Header("Enemy Destroyed")]
     public bool isDead;
+    public int scoreValue;
 
     private SpriteRenderer spriteRenderer;
     private float progress;
@@ -66,7 +83,7 @@ public class EnemyController : MonoBehaviour
             if (!isDead)
             {
                 // Set enemy rate of fire
-                fireRateWaitTime = Time.time + Random.Range(minFireRateTime, maxFireRateTime);
+                fireRateWaitTime = Time.time + (Random.Range(minFireRateTime, maxFireRateTime) / EnemyManager.Instance.speedMultiplier);
 
                 // Create bullet
                 Instantiate(bulletPrefab, transform.position, Quaternion.identity);
@@ -105,6 +122,12 @@ public class EnemyController : MonoBehaviour
 
             // Wait .5 seconds and then destroy Player
             Destroy(collision.gameObject, 0.5f);
+        }
+
+        if (collision.gameObject.tag == "Shield")
+        {
+            // Destroy shield if hit by enemy, enemy lives
+            Destroy(collision.gameObject);
         }
     }
 

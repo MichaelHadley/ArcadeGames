@@ -142,5 +142,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletType: 1
-  bulletSpeed: 5
+  bulletSpeed: 7.5
   explodedShipImage: {fileID: 21300000, guid: b409ae9e04823104994aa373b56eabdb, type: 3}

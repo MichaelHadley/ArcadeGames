@@ -11,6 +11,8 @@ public class EnemyManager : MonoBehaviour
     public int numOfEnemies = 50;
     public float speedMultiplier = 1f;
 
+    public float spawnTimer = 30f;
+
     private static EnemyManager _instance;
     public static EnemyManager Instance
     {
@@ -29,6 +31,23 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ChangeDirection();
+        MovementIncrease();
+        SpawnBoss();
+    }
+
+    void SpawnBoss()
+    {
+        spawnTimer -= Time.deltaTime;
+
+        if (spawnTimer <= 0)
+        {
+
+        }
+    }
+
+    private void ChangeDirection()
+    {
         if (reachedBarrier)
         {
             reachedBarrier = false;
@@ -43,21 +62,32 @@ public class EnemyManager : MonoBehaviour
         {
             moveDown = false;
         }
-
+    }
+     
+    private void MovementIncrease()
+    {
         // Increase movement speed of enemies by multiplier is numOfEnemies is less than the value
         if (numOfEnemies < 2)
         {
-            speedMultiplier = 10f;
+            speedMultiplier = 10.0f;
         }
         else if (numOfEnemies < 5)
         {
-            speedMultiplier = 5f;
+            speedMultiplier = 7.5f;
         }
         else if (numOfEnemies < 10)
         {
-            speedMultiplier = 2f;
+            speedMultiplier = 5.0f;
         }
         else if (numOfEnemies < 20)
+        {
+            speedMultiplier = 2.5f;
+        }
+        else if (numOfEnemies < 30)
+        {
+            speedMultiplier = 2.0f;
+        }
+        else if (numOfEnemies < 40)
         {
             speedMultiplier = 1.5f;
         }

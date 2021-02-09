@@ -61,6 +61,7 @@ public class PauseMenu : MonoBehaviour
         DOTween.KillAll();
         SceneManager.LoadScene("SpaceInvadersMenu");
     }
+
     public void QuitFrogger()
     {
         GameIsPaused = false;
