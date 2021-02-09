@@ -10,19 +10,8 @@ public class SpaceInvadersMenu : MonoBehaviour
         SceneManager.LoadScene("SpaceInvaders");
     }
 
-    public void Settings()
-    {
-        // Open scene UI
-    }
-
-    public void HighScore()
-    {
-        // Open scene UI
-    }
-
     public void QuitSpaceInvaders()
     {
         SceneManager.LoadScene("GameMenu");
     }
-
 }

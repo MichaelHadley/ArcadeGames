@@ -8,6 +8,7 @@ public class GameOver : MonoBehaviour
     public void LoadNewGame()
     {
         SceneManager.LoadScene("SpaceInvaders");
+        Time.timeScale = 1f;
     }
 
     public void QuitToMenu()

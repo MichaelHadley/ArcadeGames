@@ -11,6 +11,8 @@ public class EnemyManager : MonoBehaviour
     public int numOfEnemies = 50;
     public float speedMultiplier = 1f;
 
+    public float spawnTimer = 30f;
+
     private static EnemyManager _instance;
     public static EnemyManager Instance
     {
@@ -31,6 +33,17 @@ public class EnemyManager : MonoBehaviour
     {
         ChangeDirection();
         MovementIncrease();
+        SpawnBoss();
+    }
+
+    void SpawnBoss()
+    {
+        spawnTimer -= Time.deltaTime;
+
+        if (spawnTimer <= 0)
+        {
+
+        }
     }
 
     private void ChangeDirection()

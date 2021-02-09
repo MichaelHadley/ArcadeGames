@@ -1,9 +1,5 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/SpaceInvaders.unity
-=======
 - path: Assets/Scenes/Frogger.unity
->>>>>>> 1be4b608efff988624799720c5e75f88332e10a6
   isLoaded: 1
   isActive: 1
   isSubScene: 0

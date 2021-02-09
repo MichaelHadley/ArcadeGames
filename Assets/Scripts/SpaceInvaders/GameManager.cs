@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        scoreText.text = score.ToString();
+        scoreText.text = "Score " + score.ToString();
     }
 
     public void ScoreFunction(string reason)

@@ -27,7 +27,7 @@ public class GameMenu : MonoBehaviour
         SceneManager.LoadScene("SpaceInvaders");
     }
 
-    public void LoadSpaceInvadersMenu()
+    public void SpaceInvadersMenu()
     {
         SceneManager.LoadScene("SpaceInvadersMenu");
     }
@@ -40,6 +40,7 @@ public class GameMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+        Debug.Log("Quit Game");
     }
 
 }

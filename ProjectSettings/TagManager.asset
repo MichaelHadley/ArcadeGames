@@ -3,23 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-<<<<<<< HEAD
-  - platform
-  - Vehicle
-  - Goal
-  - WorldBarrier
-  - Enemy
-  - EnemyBullet
-  - PlayerBullet
-  - Shield
-  - GameManager
-=======
-  - Shield
-  - Enemy
-  - EnemyBullet
-  - PlayerBullet
->>>>>>> 1be4b608efff988624799720c5e75f88332e10a6
+  tags: []
   layers:
   - Default
   - TransparentFX
