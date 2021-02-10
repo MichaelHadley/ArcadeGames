@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
-
 using TMPro;
 using System.IO;
 
@@ -9,9 +8,10 @@ public class FroggerManager : MonoBehaviour
 {
     public GameObject LevelCompleteCanvas;
 
-    public GameObject lifeOne;
-    public GameObject lifeTwo;
-    public GameObject lifeThree;
+    public GameObject lifeOne, lifeTwo, lifeThree;
+
+    public GameObject goalOne, goalTwo, goalThree, goalFour;
+
 
     public TextMeshProUGUI score, highScoreText, GameOverScore;
 
@@ -57,6 +57,7 @@ public class FroggerManager : MonoBehaviour
         {
             highScore = 0;
         }
+        highScoreText.text = highScore.ToString();
     }
     public void Update()
     {
@@ -84,14 +85,12 @@ public class FroggerManager : MonoBehaviour
             Scored += 10;
             score.text = Scored + " ";
             GameOverScore.text = Scored + " ";
-            UpdateHighScore();
         }
         else if(reason == "Goal")
         {
             Scored += 100;
             score.text = Scored + " ";
             GameOverScore.text = Scored + " ";
-            UpdateHighScore();
         }
     }
 
@@ -100,12 +99,8 @@ public class FroggerManager : MonoBehaviour
         if (Scored > highScore)
         {
             highScore = Scored;
-
         }
-            highScoreText.text = highScore.ToString();
-
-            PlayerPrefs.SetInt("HighScore", highScore);
-        
+        highScoreText.text = highScore.ToString();
     }
 
     public void Death()
@@ -124,7 +119,6 @@ public class FroggerManager : MonoBehaviour
                 writer.WriteLine(Scored.ToString());
                 writer.Close();
             }
-            
             EndGame();
         }
         else
@@ -145,9 +139,8 @@ public class FroggerManager : MonoBehaviour
         {
             lifeOne.SetActive(false);
         }
-
     }
-  
+
     public void Goal()
     {
         //frog reaches end goal award points and reset play pos to start or game win if all frogs have reached end point
@@ -158,14 +151,13 @@ public class FroggerManager : MonoBehaviour
         AwardPoints("Goal");
         if (frogAtEnd == 4)
         {
-            gameHasEnded = true;
+            
             Debug.Log("Level Won");
 
             //activate canvas on screen for the player to proceed to next level or quit game
             LevelCompleteCanvas.SetActive(true);
 
             //Stops everything in the scene
-            DOTween.KillAll();
             Time.timeScale = 0f;
         }
         else
@@ -197,12 +189,25 @@ public class FroggerManager : MonoBehaviour
 
     void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        //Time.timeScale = 1f;
-        //Player.transform.position = GetComponent<Frogger>().playerSpawn.position;
-        //Frogger.Instance.ObjectMovement();
-        lives = 3;
-        PlayerPrefs.SetInt("HighScore", highScore);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);       
+    }
+
+    public void NextLevel()
+    {
+        Time.timeScale = 1f;
+        LevelCompleteCanvas.SetActive(false);
+        //reset goals
+        goalOne.transform.GetChild(2).gameObject.SetActive(false);
+        goalTwo.transform.GetChild(2).gameObject.SetActive(false);
+        goalThree.transform.GetChild(2).gameObject.SetActive(false);
+        goalFour.transform.GetChild(2).gameObject.SetActive(false);
+        frogAtEnd = 0;
+        //reset player
+        Player.transform.parent = null;
+        Player.transform.position = GetComponent<Frogger>().playerSpawn.position;
+        GetComponent<Frogger>().playerLane = 0;
+        GetComponent<Frogger>().maxPlayerLane = 0;
+        Player.transform.DOKill();
     }
 
     public void PlayAgain()

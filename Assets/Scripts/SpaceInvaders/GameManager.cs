@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
 using TMPro;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
+    string FilePath = "Assets/Resources/SpaceInvadersHighScore.txt";
+
     private static GameManager _instance;
     public static GameManager Instance
     {
@@ -23,41 +26,102 @@ public class GameManager : MonoBehaviour
     public Transform spawnPoint;
     public int numOfLives = 3;
     public GameObject playerPrefab;
+    public GameObject shield;
+    public Transform shieldSpawn;
 
     // Score
-    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI scoreText, highScoreText;
     public int score;
-
+    public int highScore;
     public GameObject Life1, Life2, Life3;
+
 
     private void Start()
     {
-        score = 0;
+
+        SpawnShields();
+
+        if (File.Exists(FilePath))
+        {
+            //Write some text to the test.txt file
+            StreamReader reader = new StreamReader(FilePath);
+            string tmp = reader.ReadLine();
+            highScore = int.Parse(tmp);
+            reader.Close();
+        }
+        else
+        {
+            highScore = 0;
+        }
+        highScoreText.text = highScore.ToString();
     }
 
-    private void Update()
+    private void SpawnShields()
     {
-        scoreText.text = "Score " + score.ToString();
+        Destroy(GameObject.FindWithTag("Shield"));
+
+        GameObject shields;
+
+        shields = Instantiate(shield, shieldSpawn.position + new Vector3(-15, -9, 0), Quaternion.identity);
+        shields = Instantiate(shield, shieldSpawn.position + new Vector3(-5, -9, 0), Quaternion.identity);
+        shields = Instantiate(shield, shieldSpawn.position + new Vector3(5, -9, 0), Quaternion.identity);
+        shields = Instantiate(shield, shieldSpawn.position + new Vector3(15, -9, 0), Quaternion.identity);
     }
+
 
     public void ScoreFunction(string reason)
     {
         if (reason == "Enemy10")
         {
-            score += 10;
+            score += 1;
+            scoreText.text = score + " ";
         }
         else if (reason == "Enemy20")
         {
-            score += 20;
+            score += 1;
+            scoreText.text = score + " ";
         }
         else if (reason == "Enemy30")
         {
-            score += 30;
+            score += 1;
+            scoreText.text = score + " ";
         }
         else if (reason == "BossKilled")
         {
             score += 100;
+            scoreText.text = score + " ";
         }
+
+        if (EnemyManager.Instance.numOfEnemies == 0)
+        {
+            NextLevel();
+        }
+    }
+
+    public void UpdateHighScore()
+    {
+        if (score > highScore)
+        {
+            highScore = score;
+        }
+        highScoreText.text = highScore.ToString();
+    }
+
+    public void NextLevel()
+    {
+        Time.timeScale = 1f;
+        //make levelcompletecanvas
+        //LevelCompleteCanvas.SetActive(false);
+        
+        // Reset enemies
+        EnemyManager.Instance.SpawnEnemy();
+
+        EnemyManager.Instance.numOfEnemies = 50;
+        
+        SpawnShields();
+
+        //reset player
+        SpawnPlayer();
     }
 
     public void PlayerDeath()
@@ -66,6 +130,12 @@ public class GameManager : MonoBehaviour
 
         if (numOfLives == 0)
         {
+            if (score >= highScore)
+            {
+                StreamWriter writer = new StreamWriter(FilePath, false);
+                writer.WriteLine(score.ToString());
+                writer.Close();
+            }
             GameOver();
         }
         else
