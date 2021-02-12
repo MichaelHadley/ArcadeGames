@@ -152,7 +152,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 446847155466835990, guid: a87a444bb1d3d9947a75dc1078119e1e,
     type: 3}
   bulletOffset: {x: 0, y: 1, z: 0}
-  fireRate: 0.5
+  fireRate: 0.25
+  isDead: 0
 --- !u!1 &9201997610596906749
 GameObject:
   m_ObjectHideFlags: 0

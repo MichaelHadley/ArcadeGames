@@ -1,7 +1,5 @@
-﻿using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using DG.Tweening;
 
 public class EnemyController : MonoBehaviour
 {
@@ -20,7 +18,9 @@ public class EnemyController : MonoBehaviour
     }
     public bool Inited { get; private set; }
 
+    [Header("Bullet variables")]
     public GameObject bulletPrefab;
+    public Vector3 bulletOffset;
 
     [Header("Fire Rate Values")]
     public float minFireRateTime = 1.0f;
@@ -57,7 +57,6 @@ public class EnemyController : MonoBehaviour
         ChangeEnemySprite();
     }
 
-
     void MoveEnemy()
     {
         Vector3 pos = transform.position;
@@ -83,6 +82,9 @@ public class EnemyController : MonoBehaviour
             {
                 // Set enemy rate of fire
                 fireRateWaitTime = Time.time + (Random.Range(minFireRateTime, maxFireRateTime) / EnemyManager.Instance.speedMultiplier);
+
+                // Bullet fire position based off ship
+                Vector3 offset = transform.rotation * bulletOffset;
 
                 // Create bullet
                 Instantiate(bulletPrefab, transform.position, Quaternion.identity);

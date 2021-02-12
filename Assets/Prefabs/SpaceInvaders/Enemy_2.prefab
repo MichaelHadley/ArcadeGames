@@ -92,7 +92,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 5681087522234265376}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 1
+  m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 446847155466835990, guid: 9cdc0eff40363f949ad6c593c8d7be56,
     type: 3}
+  bulletOffset: {x: 0, y: -1, z: 0}
   minFireRateTime: 1
   maxFireRateTime: 20
   fireRateWaitTime: 3

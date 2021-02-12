@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject shield;
     public Transform shieldSpawn;
+    public Transform shieldParent;
 
     // Score
     public TextMeshProUGUI scoreText, highScoreText;
@@ -38,7 +39,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-
         SpawnShields();
 
         if (File.Exists(FilePath))
@@ -66,27 +66,28 @@ public class GameManager : MonoBehaviour
         shields = Instantiate(shield, shieldSpawn.position + new Vector3(-5, -9, 0), Quaternion.identity);
         shields = Instantiate(shield, shieldSpawn.position + new Vector3(5, -9, 0), Quaternion.identity);
         shields = Instantiate(shield, shieldSpawn.position + new Vector3(15, -9, 0), Quaternion.identity);
-    }
 
+        shields.transform.SetParent(shieldParent);
+    }
 
     public void ScoreFunction(string reason)
     {
         if (reason == "Enemy10")
         {
-            score += 1;
+            score += 10;
             scoreText.text = score + " ";
         }
         else if (reason == "Enemy20")
         {
-            score += 1;
+            score += 20;
             scoreText.text = score + " ";
         }
         else if (reason == "Enemy30")
         {
-            score += 1;
+            score += 30;
             scoreText.text = score + " ";
         }
-        else if (reason == "BossKilled")
+        else if (reason == "Boss100")
         {
             score += 100;
             scoreText.text = score + " ";
@@ -109,25 +110,27 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
+        // Reset game time
         Time.timeScale = 1f;
-        //make levelcompletecanvas
-        //LevelCompleteCanvas.SetActive(false);
         
         // Reset enemies
         EnemyManager.Instance.SpawnEnemy();
-
         EnemyManager.Instance.numOfEnemies = 50;
         
+        // Reset shield defences
         SpawnShields();
 
-        //reset player
+        // Reset player
         SpawnPlayer();
     }
 
     public void PlayerDeath()
     {
         numOfLives--;
+        Debug.Log("life lost");
 
+        // If life lost reduce num of lifes and spawn player
+        // If num of lives is equal to 0 the game is over
         if (numOfLives == 0)
         {
             if (score >= highScore)
@@ -142,6 +145,8 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(SpawnPlayer());
         }
+
+        // Turn off life game object in game UI if life is lost
         if (numOfLives == 2)
         {
             Life3.SetActive(false);
@@ -156,7 +161,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    IEnumerator SpawnPlayer()
+    public IEnumerator SpawnPlayer()
     {
         yield return new WaitForSeconds(2);
         GameObject player = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
@@ -172,6 +177,7 @@ public class GameManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
+        // If hit by enemy bullet set player position equal to the spawn point position
         if (col.transform.tag == "EnemyBullet")
         {
             transform.position = spawnPoint.position;
