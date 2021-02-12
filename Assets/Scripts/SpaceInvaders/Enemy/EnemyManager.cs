@@ -12,6 +12,7 @@ public class EnemyManager : MonoBehaviour
     public float speedMultiplier = 1f;
 
     public float spawnTimer = 10f;
+    public float bossProgress;
 
     [Header("Enemy Prefabs")]
     public GameObject enemyRowOne;
@@ -23,6 +24,7 @@ public class EnemyManager : MonoBehaviour
 
     [Header("Enemy Transforms")]
     public Transform enemySpawnPoint;
+    public Transform bossSpawnPoint;
     public Transform rowOne;
     public Transform rowTwo;
     public Transform rowThree;
@@ -54,15 +56,18 @@ public class EnemyManager : MonoBehaviour
     {
         ChangeDirection();
         IncreaseMovement();
+        SpawnBoss();
     }
 
     public void SpawnBoss()
     {
-        spawnTimer -= Time.deltaTime;
+        bossProgress += Time.deltaTime / spawnTimer;
 
-        if (spawnTimer <= 0)
+        if (bossProgress >= 1)
         {
-            Instantiate(boss, transform.position, Quaternion.identity);
+            bossProgress = 0f;
+            spawnTimer = Random.Range(15f, 25f);
+            Instantiate(boss, bossSpawnPoint.position, Quaternion.identity);
         }
     }
 
@@ -73,7 +78,6 @@ public class EnemyManager : MonoBehaviour
             SpawnEnemy();
         }
     }
-
     
     public void SpawnEnemy()
     {
@@ -81,19 +85,19 @@ public class EnemyManager : MonoBehaviour
 
         for (int i = 0; i < 10; i++)
         {
-            enemies = Instantiate(enemyRowOne, enemySpawnPoint.position + new Vector3(2 * i, 0, 0), Quaternion.identity);
+            enemies = Instantiate(enemyRowOne, enemySpawnPoint.position + new Vector3(2 * i, -8, 0), Quaternion.identity);
             enemies.transform.SetParent(rowOne);
 
-            enemies = Instantiate(enemyRowTwo, enemySpawnPoint.position + new Vector3(2 * i, -2, 0), Quaternion.identity);
+            enemies = Instantiate(enemyRowTwo, enemySpawnPoint.position + new Vector3(2 * i, -6, 0), Quaternion.identity);
             enemies.transform.SetParent(rowTwo);
 
             enemies = Instantiate(enemyRowThree, enemySpawnPoint.position + new Vector3(2 * i, -4, 0), Quaternion.identity);
             enemies.transform.SetParent(rowThree);
 
-            enemies = Instantiate(enemyRowFour, enemySpawnPoint.position + new Vector3(2 * i, -6, 0), Quaternion.identity);
+            enemies = Instantiate(enemyRowFour, enemySpawnPoint.position + new Vector3(2 * i, -2, 0), Quaternion.identity);
             enemies.transform.SetParent(rowFour);
 
-            enemies = Instantiate(enemyRowFive, enemySpawnPoint.position + new Vector3(2 * i, -8, 0), Quaternion.identity);
+            enemies = Instantiate(enemyRowFive, enemySpawnPoint.position + new Vector3(2 * i, 0, 0), Quaternion.identity);
             enemies.transform.SetParent(rowFive);
         }
     }

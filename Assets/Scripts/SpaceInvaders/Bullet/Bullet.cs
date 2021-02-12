@@ -58,7 +58,6 @@ public class Bullet : MonoBehaviour
         transform.position = pos;
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy" && bulletType == BulletType.player)
@@ -85,7 +84,25 @@ public class Bullet : MonoBehaviour
 
                 // Destroy bullet
                 Destroy(gameObject);
+            }
+        }
+        else if (collision.gameObject.tag == "Boss" && bulletType == BulletType.player)
+        {
+            if (collision.GetComponent<Boss>().isDead == false)
+            {
+                SoundManager.Instance.PlayOneShot(SoundManager.Instance.enemyDies);
 
+                collision.GetComponent<SpriteRenderer>().sprite = explodedShipImage;
+
+                collision.GetComponent<Boss>().isDead = true;
+
+                string bossKilled = "Boss" + collision.GetComponent<Boss>().scoreValue.ToString();
+
+                GameManager.Instance.ScoreFunction(bossKilled);
+
+                Destroy(collision.gameObject, 0.5f);
+
+                Destroy(gameObject);
             }
         }
         else if (collision.gameObject.tag == "Player" && bulletType == BulletType.enemy)
@@ -138,10 +155,5 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
     }
 }

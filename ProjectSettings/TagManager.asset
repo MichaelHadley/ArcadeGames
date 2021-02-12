@@ -15,6 +15,7 @@ TagManager:
   - EnemyBullet
   - Shield
   - DeathZone
+  - Boss
   layers:
   - Default
   - TransparentFX

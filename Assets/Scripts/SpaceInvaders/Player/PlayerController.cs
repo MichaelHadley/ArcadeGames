@@ -45,14 +45,18 @@ public class PlayerController : MonoBehaviour
     {
         Movement();
         Shoot();
-        DestroyOffScreen();
+        RespawnShields();
+    }
 
+    private void RespawnShields()
+    {
         shieldProgress += Time.deltaTime / shieldDuration;
 
         if (shieldProgress >= 1)
         {
             if (shield == true)
             {
+                shieldProgress = 0f;
                 spriteRenderer = GetComponent<SpriteRenderer>();
                 spriteRenderer.sprite = playerSprite;
                 shield = false;
@@ -63,18 +67,24 @@ public class PlayerController : MonoBehaviour
     private void DestroyOffScreen()
     {
         Vector3 playerRelPos = Camera.main.WorldToViewportPoint(transform.position);
-        if (playerRelPos.x < 0f || playerRelPos.x > 1)
+
+        // If the players relative position is greater than the camera's position, destroy player and deduct one life
+        if (playerRelPos.x < 0f || playerRelPos.x > 1f)
         {
             Destroy(gameObject);
+            GameManager.Instance.PlayerDeath();
         }
     }
 
     private void FixedUpdate()
     {
+        DestroyOffScreen();
+
+        // If dead stop movement so you can't move the exploded sprite
         if (!isDead)
         {
             rb.MovePosition(rb.position + (movement * moveSpeed * Time.fixedDeltaTime));
-        }
+        }      
     }
 
     public void Movement()

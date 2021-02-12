@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 6073241133303805695}
   - component: {fileID: 6073241133303805694}
   - component: {fileID: 8765691072960385092}
+  - component: {fileID: 2878841881937305923}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,7 +90,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6073241133303805680}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -101,7 +102,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!61 &8765691072960385092
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -128,3 +129,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 14, y: 7}
   m_EdgeRadius: 0
+--- !u!114 &2878841881937305923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6073241133303805680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c035f457056c8d428e2bfe393df462a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 446847155466835990, guid: 9cdc0eff40363f949ad6c593c8d7be56,
+    type: 3}
+  bulletOffset: {x: 0, y: -1, z: 0}
+  minFireRateTime: 1
+  maxFireRateTime: 3
+  fireRateWaitTime: 3
+  speed: 5
+  explodedShipImage: {fileID: 21300000, guid: 87587c07675f04347b1c014cccc895d0, type: 3}
+  isDead: 0
+  scoreValue: 100
