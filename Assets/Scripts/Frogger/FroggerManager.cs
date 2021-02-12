@@ -15,7 +15,6 @@ public class FroggerManager : MonoBehaviour
 
     public TextMeshProUGUI score, highScoreText, GameOverScore;
 
-
     public GameObject GameOverCanvas;
     public GameObject Player;
     private float stopProgress;
