@@ -26,6 +26,11 @@ public class Player : MonoBehaviour
             FroggerManager.Instance.Death();
         }
 
+        if (col.tag == "DeathZone")
+        {
+            FroggerManager.Instance.Death();
+        }
+
         if (col.tag == "Goal")
         {
             if (col.gameObject.transform.GetChild(2).gameObject.activeSelf)

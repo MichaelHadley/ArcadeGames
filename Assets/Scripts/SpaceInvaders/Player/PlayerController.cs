@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public Vector3 bulletOffset;
     public float fireRate;
 
+    public bool isDead;
+
     private float fireCoolDown;
     private Vector2 movement;
     private SpriteRenderer spriteRenderer;
@@ -69,7 +71,10 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        if (!isDead)
+        {
+            rb.MovePosition(rb.position + (movement * moveSpeed * Time.fixedDeltaTime));
+        }
     }
 
     public void Movement()

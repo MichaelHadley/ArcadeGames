@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour
     public Sprite startingImage;
     public Sprite altImage;
     public Sprite explodedShipImage;
-    
+
     [Header("Enemy Destroyed")]
     public bool isDead;
     public int scoreValue;
@@ -57,13 +57,12 @@ public class EnemyController : MonoBehaviour
         ChangeEnemySprite();
     }
 
+
     void MoveEnemy()
     {
         Vector3 pos = transform.position;
 
-        Vector3 velocity = new Vector3(speed * EnemyManager.Instance.speedMultiplier 
-                                             * EnemyManager.Instance.direction 
-                                             * Time.deltaTime, 0, 0);
+        Vector3 velocity = new Vector3(speed * EnemyManager.Instance.speedMultiplier * EnemyManager.Instance.direction * Time.deltaTime, 0, 0);
 
         pos += velocity;
 
@@ -94,43 +93,6 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    // Switch direction on collision
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // When enemy reaches left barrier move down then move right
-        if (collision.gameObject.name == "LeftWorldBarrier")
-        {
-            EnemyManager.Instance.reachedBarrier = true;
-        }
-
-        // When enemy reaches right barrier move down then more left
-        if (collision.gameObject.name == "RightWorldBarrier")
-        {
-            EnemyManager.Instance.reachedBarrier = true;
-        }
-
-        if (collision.gameObject.tag == "Player")
-        {
-            // Play exploding ship sound
-            SoundManager.Instance.PlayOneShot(SoundManager.Instance.shipExplosion);
-
-            // Change to exploded ship image
-            collision.GetComponent<SpriteRenderer>().sprite = explodedShipImage;
-
-            // Destroy AlienBullet
-            Destroy(gameObject);
-
-            // Wait .5 seconds and then destroy Player
-            Destroy(collision.gameObject, 0.5f);
-        }
-
-        if (collision.gameObject.tag == "Shield")
-        {
-            // Destroy shield if hit by enemy, enemy lives
-            Destroy(collision.gameObject);
-        }
-    }
-
     public void ChangeEnemySprite()
     {
         progress += Time.deltaTime / (secBeforeSpriteChange / EnemyManager.Instance.speedMultiplier);
@@ -153,4 +115,44 @@ public class EnemyController : MonoBehaviour
             }
         }
     }  
+
+    // Switch direction on collision
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!isDead)
+        {
+            // When enemy reaches left barrier move down then move right
+            if (collision.gameObject.name == "LeftWorldBarrier")
+            {
+                EnemyManager.Instance.reachedBarrier = true;
+            }
+
+            // When enemy reaches right barrier move down then more left
+            if (collision.gameObject.name == "RightWorldBarrier")
+            {
+                EnemyManager.Instance.reachedBarrier = true;
+            }
+
+            if (collision.gameObject.tag == "Player")
+            {
+                // Play exploding ship sound
+                SoundManager.Instance.PlayOneShot(SoundManager.Instance.shipExplosion);
+
+                // Change to exploded ship image
+                collision.GetComponent<SpriteRenderer>().sprite = explodedShipImage;
+
+                // Destroy AlienBullet
+                Destroy(gameObject);
+
+                // Wait .5 seconds and then destroy Player
+                Destroy(collision.gameObject, 0.5f);
+            }
+
+            if (collision.gameObject.tag == "Shield")
+            {
+                // Destroy shield if hit by enemy, enemy lives
+                Destroy(collision.gameObject);
+            }
+        }
+    }
 }

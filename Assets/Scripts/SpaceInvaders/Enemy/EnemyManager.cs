@@ -11,7 +11,23 @@ public class EnemyManager : MonoBehaviour
     public int numOfEnemies = 50;
     public float speedMultiplier = 1f;
 
-    public float spawnTimer = 30f;
+    public float spawnTimer = 10f;
+
+    [Header("Enemy Prefabs")]
+    public GameObject enemyRowOne;
+    public GameObject enemyRowTwo;
+    public GameObject enemyRowThree;
+    public GameObject enemyRowFour;
+    public GameObject enemyRowFive;
+    public GameObject boss;
+
+    [Header("Enemy Transforms")]
+    public Transform enemySpawnPoint;
+    public Transform rowOne;
+    public Transform rowTwo;
+    public Transform rowThree;
+    public Transform rowFour;
+    public Transform rowFive;
 
     private static EnemyManager _instance;
     public static EnemyManager Instance
@@ -28,21 +44,57 @@ public class EnemyManager : MonoBehaviour
     }
     public bool Inited { get; private set; }
 
+    private void Start()
+    {
+        SpawnEnemy();
+    }
+
     // Update is called once per frame
     void Update()
     {
         ChangeDirection();
-        MovementIncrease();
-        SpawnBoss();
+        IncreaseMovement();
     }
 
-    void SpawnBoss()
+    public void SpawnBoss()
     {
         spawnTimer -= Time.deltaTime;
 
         if (spawnTimer <= 0)
         {
+            Instantiate(boss, transform.position, Quaternion.identity);
+        }
+    }
 
+    void EnemyDeath()
+    {
+        if (numOfEnemies == 0)
+        {
+            SpawnEnemy();
+        }
+    }
+
+    
+    public void SpawnEnemy()
+    {
+        GameObject enemies;
+
+        for (int i = 0; i < 10; i++)
+        {
+            enemies = Instantiate(enemyRowOne, enemySpawnPoint.position + new Vector3(2 * i, 0, 0), Quaternion.identity);
+            enemies.transform.SetParent(rowOne);
+
+            enemies = Instantiate(enemyRowTwo, enemySpawnPoint.position + new Vector3(2 * i, -2, 0), Quaternion.identity);
+            enemies.transform.SetParent(rowTwo);
+
+            enemies = Instantiate(enemyRowThree, enemySpawnPoint.position + new Vector3(2 * i, -4, 0), Quaternion.identity);
+            enemies.transform.SetParent(rowThree);
+
+            enemies = Instantiate(enemyRowFour, enemySpawnPoint.position + new Vector3(2 * i, -6, 0), Quaternion.identity);
+            enemies.transform.SetParent(rowFour);
+
+            enemies = Instantiate(enemyRowFive, enemySpawnPoint.position + new Vector3(2 * i, -8, 0), Quaternion.identity);
+            enemies.transform.SetParent(rowFive);
         }
     }
 
@@ -64,7 +116,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
      
-    private void MovementIncrease()
+    private void IncreaseMovement()
     {
         // Increase movement speed of enemies by multiplier is numOfEnemies is less than the value
         if (numOfEnemies < 2)
@@ -90,6 +142,10 @@ public class EnemyManager : MonoBehaviour
         else if (numOfEnemies < 40)
         {
             speedMultiplier = 1.5f;
+        }
+        else
+        {
+            speedMultiplier = 1f;
         }
     }
 }

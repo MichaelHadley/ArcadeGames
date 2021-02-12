@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Bullet : MonoBehaviour
 {
@@ -62,26 +63,30 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy" && bulletType == BulletType.player)
         {
-            // Play explosion sound effect when hit
-            SoundManager.Instance.PlayOneShot(SoundManager.Instance.enemyDies);
+            if (collision.GetComponent<EnemyController>().isDead == false)
+            {
+                // Play explosion sound effect when hit
+                SoundManager.Instance.PlayOneShot(SoundManager.Instance.enemyDies);
 
-            // Initiate explosion spite
-            collision.GetComponent<SpriteRenderer>().sprite = explodedShipImage;
+                // Initiate explosion spite
+                collision.GetComponent<SpriteRenderer>().sprite = explodedShipImage;
 
-            // Mark enemy as dead to stop it updating while exploded ship image is shown
-            collision.GetComponent<EnemyController>().isDead = true;
+                // Mark enemy as dead to stop it updating while exploded ship image is shown
+                collision.GetComponent<EnemyController>().isDead = true;
 
-            EnemyManager.Instance.numOfEnemies--;
+                EnemyManager.Instance.numOfEnemies--;
 
-            string enemyKilled = "Enemy" + collision.GetComponent<EnemyController>().scoreValue.ToString();
+                string enemyKilled = "Enemy" + collision.GetComponent<EnemyController>().scoreValue.ToString();
 
-            GameManager.Instance.ScoreFunction(enemyKilled);
+                GameManager.Instance.ScoreFunction(enemyKilled);
 
-            // Destroy explosion after 0.5 of a second
-            Destroy(collision.gameObject, .5f);
+                // Destroy explosion after 0.5 of a second
+                Destroy(collision.gameObject, .5f);
 
-            // Destroy bullet
-            Destroy(gameObject);
+                // Destroy bullet
+                Destroy(gameObject);
+
+            }
         }
         else if (collision.gameObject.tag == "Player" && bulletType == BulletType.enemy)
         {
@@ -96,7 +101,9 @@ public class Bullet : MonoBehaviour
                 collision.GetComponent<PlayerController>().shield = true;
 
                 collision.GetComponent<PlayerController>().shieldProgress = 0f;
-                
+
+                collision.GetComponent<PlayerController>().isDead = true;
+
                 // Destroy explosion after 0.5 of a second
                 Destroy(collision.gameObject, 0.5f);
 
