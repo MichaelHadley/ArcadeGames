@@ -215,6 +215,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: FroggerCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1381010960868311569, guid: 7a40dfeedba99a646983bad5e3f8303e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -85
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381010960868311569, guid: 7a40dfeedba99a646983bad5e3f8303e,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 480
+      objectReference: {fileID: 0}
     - target: {fileID: 1381010960783930295, guid: 7a40dfeedba99a646983bad5e3f8303e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -393,10 +403,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5767647004129302122, guid: 7a40dfeedba99a646983bad5e3f8303e,
         type: 3}
+<<<<<<< HEAD
       propertyPath: m_textInfo.spaceCount
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5767647004129302122, guid: 7a40dfeedba99a646983bad5e3f8303e,
+=======
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7c95f048b68248e408b6fbc8b345e966,
+>>>>>>> f2bdae874e3bc4484e0cebf27a1b36ffaf910edc
         type: 3}
       propertyPath: m_textInfo.wordCount
       value: 0
@@ -426,6 +442,7 @@ PrefabInstance:
       propertyPath: m_textInfo.spaceCount
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 8803356450881811443, guid: 7a40dfeedba99a646983bad5e3f8303e,
         type: 3}
       propertyPath: m_textInfo.wordCount
@@ -437,6 +454,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8803356450881811443, guid: 7a40dfeedba99a646983bad5e3f8303e,
+=======
+    - target: {fileID: 1381010960868311570, guid: 7a40dfeedba99a646983bad5e3f8303e,
+>>>>>>> f2bdae874e3bc4484e0cebf27a1b36ffaf910edc
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
@@ -500,6 +520,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381010960929840587, guid: 7a40dfeedba99a646983bad5e3f8303e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381010960400718116, guid: 7a40dfeedba99a646983bad5e3f8303e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381010959200199029, guid: 7a40dfeedba99a646983bad5e3f8303e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -195
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a40dfeedba99a646983bad5e3f8303e, type: 3}
