@@ -1,9 +1,5 @@
 sceneSetups:
-<<<<<<< HEAD
 - path: Assets/Scenes/GameMenu.unity
-=======
-- path: Assets/Scenes/FroggerMenu.unity
->>>>>>> f2bdae874e3bc4484e0cebf27a1b36ffaf910edc
   isLoaded: 1
   isActive: 1
   isSubScene: 0
