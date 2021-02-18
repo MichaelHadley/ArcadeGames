@@ -18,7 +18,6 @@ ScriptsOnlyBuild:
     - PlayerController
     - Shield
     - SoundManager
-    - SpaceInvadersMenu
     DOTween.dll:
     - DG.Tweening.Core.DOTweenSettings
     Unity.TextMeshPro.dll:
@@ -335,8 +334,6 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9380}
-    - Class: 114
       Script: {instanceID: 9412}
     - Class: 114
       Script: {instanceID: 9414}
@@ -351,12 +348,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9470}
     - Class: 114
+<<<<<<< HEAD
       Script: {instanceID: 10114}
     - Class: 114
       Script: {instanceID: 10254}
     - Class: 114
       Script: {instanceID: 10258}
     - Class: 114
+=======
+      Script: {instanceID: 9820}
+    - Class: 114
+      Script: {instanceID: 10114}
+    - Class: 114
+      Script: {instanceID: 10254}
+    - Class: 114
+      Script: {instanceID: 10258}
+    - Class: 114
+>>>>>>> 59a950043691c28323fc320f43d39bdf705a9f0f
       Script: {instanceID: 10566}
     - Class: 115
       Script: {instanceID: 0}
@@ -1358,4 +1366,8 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Frogger.unity
   - Assets/Scenes/SpaceInvadersMenu.unity
   - Assets/Scenes/SpaceInvaders.unity
+<<<<<<< HEAD
   playerPath: D:/micha/ArcadeGames.exe
+=======
+  playerPath: D:/repos/Unity/ArcadeGames/ArcadeGames.exe
+>>>>>>> 59a950043691c28323fc320f43d39bdf705a9f0f
