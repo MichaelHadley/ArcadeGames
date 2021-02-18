@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327497714755547021}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0, z: 0}
+  m_LocalPosition: {x: -0.65, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2669531354125110753}
@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 2669531354125110753}
   - component: {fileID: 2669531354125110752}
   - component: {fileID: 1760340153977380043}
+  - component: {fileID: 6211777029731273514}
   m_Layer: 0
   m_Name: LilyPad
   m_TagString: platform
@@ -55,9 +56,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2669531354125110754}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 1.5, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_Children:
   - {fileID: 1784371627891660364}
   - {fileID: 7165325850738675585}
@@ -101,8 +102,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 08ddb980371a4534b8322884ddb73b05, type: 3}
-  m_Color: {r: 0.52680826, g: 0.7830189, b: 0.23268957, a: 1}
+  m_Sprite: {fileID: 21300000, guid: fc856502885f40e47b5ebfb03e09d092, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -125,19 +126,35 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.002894491, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.28, y: 1.4}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.2836647, y: 1.2662973}
   m_EdgeRadius: 0
+--- !u!114 &6211777029731273514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2669531354125110754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10f4630d4bb9de74fa834bbc5b46c2c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftLilyPad: {fileID: 21300000, guid: 752b050566cac274bbb6d33b830ddb60, type: 3}
+  rightLilyPad: {fileID: 21300000, guid: fc856502885f40e47b5ebfb03e09d092, type: 3}
+  upLilyPad: {fileID: 21300000, guid: bbdc4a8d2fbe36f4abaacb85864ece2b, type: 3}
+  downLilyPad: {fileID: 21300000, guid: 5aa6d0e65c04f114ba412d64470b1d77, type: 3}
 --- !u!1 &3411576701649721394
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +179,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3411576701649721394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0.65, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2669531354125110753}

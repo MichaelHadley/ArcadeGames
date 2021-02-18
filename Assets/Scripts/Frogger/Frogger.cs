@@ -31,7 +31,6 @@ public class Frogger : MonoBehaviour
     private GameObject truckSprite;
     private GameObject carSprite;
     
-    
     [Header("River Items")]
     public GameObject Log;
     public GameObject LilyPad;
@@ -45,7 +44,6 @@ public class Frogger : MonoBehaviour
     public Transform objStart2;
     public Transform objEnd2;
 
-
     [Header("Lists")]
     private List<GameObject> Traffic = new List<GameObject>();
     private List<GameObject> Logs = new List<GameObject>();
@@ -53,7 +51,12 @@ public class Frogger : MonoBehaviour
     private int curTrafficItem = 0;
     private int curLogItem = 0;
     private int curLilyPadItem = 0;
-  
+
+    [Header("Instantiated Objects")]
+    public Transform roadObjects;
+    public Transform riverObjects;
+
+
     private float[] laneProgress;
     private float[] laneWait;
     private int numOfLanes;
@@ -74,6 +77,8 @@ public class Frogger : MonoBehaviour
     public int playerLane;
     public int maxPlayerLane;
     private bool isMoving;
+
+    private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -102,31 +107,36 @@ public class Frogger : MonoBehaviour
             if (Random.Range(0f, 1f) < 0.5f)
             {
                 carSprite = Instantiate(car, objEnd.position, Quaternion.identity);
+                carSprite.transform.SetParent(roadObjects);
                 Traffic.Add(carSprite);
             }
             else
             {
                 truckSprite = Instantiate(Truck, objEnd.position, Quaternion.identity);
+                truckSprite.transform.SetParent(roadObjects);
                 Traffic.Add(truckSprite);
             }
         }
 
         //River Objects spawn
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 10; i++)
         {
             logSprite = Instantiate(Log, objEnd.position, Quaternion.identity);
+            logSprite.transform.SetParent(riverObjects);
             Logs.Add(logSprite);
 
         }
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 10; i++)
         {
             lilypadSprite = Instantiate(LilyPad, objEnd.position, Quaternion.identity);
+            lilypadSprite.transform.SetParent(riverObjects);
             LilyPads.Add(lilypadSprite);
         }
-        
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
         //playerSprite = Instantiate(player, playerSpawn.position, Quaternion.identity);
         playerSprite.transform.position = playerSpawn.position;
-
 
         for (int i = 0; i < numOfLanes; i++)
         {
@@ -153,6 +163,7 @@ public class Frogger : MonoBehaviour
             {
                 if (i % 2 == 0)
                 {
+                    //left to right
                     thisObjStart = objStart.position;
                     thisObjEnd = objEnd.position;
                 }
@@ -163,10 +174,20 @@ public class Frogger : MonoBehaviour
                     thisObjEnd = objEnd2.position;
                 }
                 laneProgress[i] = 0f;
-                //left to right 
+                //move across screen
                 if (laneDefinition[i] == laneType.RoadLane)
                 {
                     Traffic[curTrafficItem].transform.position = thisObjStart + new Vector3(0, laneGap * i, 0);
+                    if (i % 2 == 0)
+                    {
+                        Traffic[curTrafficItem].transform.rotation = new Quaternion(0, 180, 0, 0);
+
+                    }
+                    else
+                    {
+                        Traffic[curTrafficItem].transform.rotation = new Quaternion(0, 0, 0, 0);
+
+                    }
                     Traffic[curTrafficItem].transform.DOMoveX(thisObjEnd.x, 10f).SetEase(Ease.Linear);
                     curTrafficItem++;
                     if (curTrafficItem == Traffic.Count)
@@ -189,6 +210,9 @@ public class Frogger : MonoBehaviour
                 else if (laneDefinition[i] == laneType.LilyPadLane)
                 {
                     LilyPads[curLilyPadItem].transform.position = thisObjStart + new Vector3(0, laneGap * i, 0);
+
+                    LilyPads[curLilyPadItem].GetComponent<SpriteManager>().UpdateSprite();
+
                     LilyPads[curLilyPadItem].transform.DOMoveX(thisObjEnd.x, 10f).SetEase(Ease.Linear);
                     curLilyPadItem++;
                     if (curLilyPadItem == LilyPads.Count)
@@ -321,9 +345,5 @@ public class Frogger : MonoBehaviour
                 FroggerManager.Instance.AwardPoints("laneProgress");
             }
         }
-
-        //landingPad: update if player has landed in between the childern and turn on the occupied gameobject
-        // if occupied gameobject is on and the player lands kill the player
     }
-    
 }
