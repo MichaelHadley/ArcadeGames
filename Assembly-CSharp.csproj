@@ -62,12 +62,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Audio\AudioController.cs" />
+    <Compile Include="Assets\Scripts\Audio\Profiles.cs" />
+    <Compile Include="Assets\Scripts\Audio\Sliders.cs" />
     <Compile Include="Assets\Scripts\Frogger\Frogger.cs" />
     <Compile Include="Assets\Scripts\Frogger\FroggerManager.cs" />
     <Compile Include="Assets\Scripts\Frogger\Goal.cs" />
     <Compile Include="Assets\Scripts\Frogger\Player.cs" />
     <Compile Include="Assets\Scripts\GameManagement\InputManager.cs" />
-    <Compile Include="Assets\Scripts\GameManagement\SoundManager.cs" />
     <Compile Include="Assets\Scripts\SpaceInvaders\Backgrounnd\BGMovement.cs" />
     <Compile Include="Assets\Scripts\SpaceInvaders\Bullet\Bullet.cs" />
     <Compile Include="Assets\Scripts\SpaceInvaders\Enemy\Boss.cs" />
@@ -76,7 +78,6 @@
     <Compile Include="Assets\Scripts\SpaceInvaders\GameManager.cs" />
     <Compile Include="Assets\Scripts\SpaceInvaders\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\SpaceInvaders\Shield.cs" />
-    <Compile Include="Assets\Scripts\UI\AudioSettings.cs" />
     <Compile Include="Assets\Scripts\UI\GameMenu.cs" />
     <Compile Include="Assets\Scripts\UI\GameOver.cs" />
     <Compile Include="Assets\Scripts\UI\PauseMenu.cs" />

@@ -22,12 +22,14 @@ public class Boss : MonoBehaviour
     public bool isDead;
     public int scoreValue;
 
+    [Header("Audio")]
+    public AudioClip enemyBulletClip;
+
     private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
         fireRateWaitTime = Time.time + Random.Range(minFireRateTime, maxFireRateTime);
     }
 
@@ -61,11 +63,11 @@ public class Boss : MonoBehaviour
                 // Bullet fire position based off ship
                 Vector3 offset = transform.rotation * bulletOffset;
 
+                // Play audioclip
+                gameObject.GetComponent<AudioSource>().PlayOneShot(enemyBulletClip, .5f);
+
                 // Create bullet
                 Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-
-                // Play bullet audio when shot
-                SoundManager.Instance.PlayOneShot(SoundManager.Instance.enemyBullet);
             }
         }
     }

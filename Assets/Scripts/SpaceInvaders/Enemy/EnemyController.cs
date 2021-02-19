@@ -40,13 +40,17 @@ public class EnemyController : MonoBehaviour
     public bool isDead;
     public int scoreValue;
 
+    [Header("Audio")]
+    public AudioClip movementAudio;
+    public AudioClip enemyBulletClip;
+    public AudioClip shipExplosion;
+
     private SpriteRenderer spriteRenderer;
     private float progress;
 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
         fireRateWaitTime = Time.time + Random.Range(minFireRateTime, maxFireRateTime);
     }
 
@@ -86,11 +90,11 @@ public class EnemyController : MonoBehaviour
                 // Bullet fire position based off ship
                 Vector3 offset = transform.rotation * bulletOffset;
 
+                // Play audioclip
+                gameObject.GetComponent<AudioSource>().PlayOneShot(enemyBulletClip, .5f);
+
                 // Create bullet
                 Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-
-                // Play bullet audio when shot
-                SoundManager.Instance.PlayOneShot(SoundManager.Instance.enemyBullet);
             }
         }
     }
@@ -112,7 +116,9 @@ public class EnemyController : MonoBehaviour
                 else
                 {
                     spriteRenderer.sprite = startingImage;
-                    SoundManager.Instance.PlayOneShot(SoundManager.Instance.enemyNoise2);
+
+                    // Play movement sound when switching between sprites
+                    gameObject.GetComponent<AudioSource>().PlayOneShot(movementAudio, 0.05f);
                 }
             }
         }
@@ -135,10 +141,11 @@ public class EnemyController : MonoBehaviour
                 EnemyManager.Instance.reachedBarrier = true;
             }
 
+            // If enemy collides with the player destroy both the player and enemy
             if (collision.gameObject.tag == "Player")
             {
                 // Play exploding ship sound
-                SoundManager.Instance.PlayOneShot(SoundManager.Instance.shipExplosion);
+                collision.gameObject.GetComponent<AudioSource>().PlayOneShot(shipExplosion);
 
                 // Change to exploded ship image
                 collision.GetComponent<SpriteRenderer>().sprite = explodedShipImage;

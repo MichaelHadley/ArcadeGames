@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,6 +19,9 @@ public class PlayerController : MonoBehaviour
     public float fireRate;
 
     public bool isDead;
+
+    [Header("Audio")]
+    public AudioClip playerBulletClip;
 
     private float fireCoolDown;
     private Vector2 movement;
@@ -107,8 +108,8 @@ public class PlayerController : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, transform.position + offset, Quaternion.identity);
             bullet.layer = gameObject.layer;
 
-            // Play One Shot Audio
-            SoundManager.Instance.PlayOneShot(SoundManager.Instance.playerBullet);
+            // Play bullet audio when shot
+            gameObject.GetComponent<AudioSource>().PlayOneShot(playerBulletClip, .5f);
         }
     }
 }

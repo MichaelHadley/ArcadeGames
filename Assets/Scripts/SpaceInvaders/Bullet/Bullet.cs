@@ -17,6 +17,10 @@ public class Bullet : MonoBehaviour
 
     public Sprite explodedShipImage;
 
+    [Header("Audio")]
+    public AudioClip enemyDiesClip;
+    public AudioClip shipExplosion;
+
     private static Bullet _instance;
     public static Bullet Instance
     {
@@ -31,7 +35,6 @@ public class Bullet : MonoBehaviour
         }
     }
     public bool Inited { get; private set; }
-
 
     private void Update()
     {
@@ -64,8 +67,8 @@ public class Bullet : MonoBehaviour
         {
             if (collision.GetComponent<EnemyController>().isDead == false)
             {
-                // Play explosion sound effect when hit
-                SoundManager.Instance.PlayOneShot(SoundManager.Instance.enemyDies);
+                // Play audioclip
+                collision.gameObject.GetComponent<AudioSource>().PlayOneShot(enemyDiesClip, 1f);
 
                 // Initiate explosion spite
                 collision.GetComponent<SpriteRenderer>().sprite = explodedShipImage;
@@ -90,7 +93,8 @@ public class Bullet : MonoBehaviour
         {
             if (collision.GetComponent<Boss>().isDead == false)
             {
-                SoundManager.Instance.PlayOneShot(SoundManager.Instance.enemyDies);
+                // Play audioclip
+                collision.gameObject.GetComponent<AudioSource>().PlayOneShot(enemyDiesClip, 1f);
 
                 collision.GetComponent<SpriteRenderer>().sprite = explodedShipImage;
 
@@ -109,8 +113,8 @@ public class Bullet : MonoBehaviour
         {
             if (collision.GetComponent<PlayerController>().shield == false)
             {
-                // Play explosion sound effect when hit
-                SoundManager.Instance.PlayOneShot(SoundManager.Instance.shipExplosion);
+                // Play audioclip
+                collision.gameObject.GetComponent<AudioSource>().PlayOneShot(shipExplosion, 1f);
 
                 // Initiate explosion spite
                 collision.GetComponent<SpriteRenderer>().sprite = explodedShipImage;
