@@ -77,6 +77,7 @@ public class Frogger : MonoBehaviour
     public int playerLane;
     public int maxPlayerLane;
     private bool isMoving;
+    public int curDir;
 
     private SpriteRenderer spriteRenderer;
 
@@ -224,13 +225,15 @@ public class Frogger : MonoBehaviour
             }
         }
     }
-    
+
     public void MoveForwards()
     {
         if (!isMoving)
         {
             isMoving = true;
             playerSprite.transform.DOMoveY(playerSprite.transform.position.y + laneGap, 0.2f);
+            playerSprite.transform.Rotate(0, 0, (curDir - 0) * 90);
+            curDir = 0;
             playerLane++;
             StartCoroutine("LandingCheck");
         }
@@ -239,10 +242,12 @@ public class Frogger : MonoBehaviour
     {
         if (!isMoving)
         {
-            if(playerLane > 0)
+            if (playerLane > 0)
             {
                 isMoving = true;
                 playerSprite.transform.DOMoveY(playerSprite.transform.position.y - laneGap, 0.2f);
+                playerSprite.transform.Rotate(0, 0, (curDir - 2) * 90);
+                curDir = 2;
                 playerLane--;
                 StartCoroutine("LandingCheck");
             }
@@ -253,11 +258,13 @@ public class Frogger : MonoBehaviour
         if (!isMoving)
         {
             //this gets the player position reletive to the screen view with the screen x value going from 0 to 1, stops the player going off screen
-            Vector3 playerRelPos = Camera.main.WorldToViewportPoint(playerSprite.transform.GetChild(1).transform.position + new Vector3(laneGap,0,0));
+            Vector3 playerRelPos = Camera.main.WorldToViewportPoint(playerSprite.transform.GetChild(1).transform.position + new Vector3(laneGap, 0, 0));
             if (playerRelPos.x < 1f)
             {
                 isMoving = true;
                 playerSprite.transform.DOMoveX(playerSprite.transform.position.x + laneGap, 0.2f);
+                playerSprite.transform.Rotate(0, 0, (curDir - 1) * 90);
+                curDir = 1;
                 StartCoroutine("LandingCheck");
             }
         }
@@ -269,9 +276,11 @@ public class Frogger : MonoBehaviour
             //this gets the player position reletive to the screen view with the screen x value going from 0 to 1, stops the player going off screen
             Vector3 playerRelPos = Camera.main.WorldToViewportPoint(playerSprite.transform.GetChild(0).transform.position - new Vector3(laneGap, 0, 0));
             if (playerRelPos.x > 0)
-            { 
+            {
                 isMoving = true;
                 playerSprite.transform.DOMoveX(playerSprite.transform.position.x - laneGap, 0.2f);
+                playerSprite.transform.Rotate(0, 0, (curDir - 3) * 90);
+                curDir = 3;
                 StartCoroutine("LandingCheck");
             }
         }
