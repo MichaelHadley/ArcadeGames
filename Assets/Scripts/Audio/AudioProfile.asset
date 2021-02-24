@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e1bff890226bc5458f44f871efff1bf, type: 3}
   m_Name: AudioProfile
   m_EditorClassIdentifier: 
-  saveInPlayerPrefs: 0
+  saveInPlayerPrefs: 1
   prefPrefix: Settings
   audioMixer: {fileID: 24100000, guid: 44ebe93b99889e44a99ae3f5f36595f9, type: 2}
   volumeControl:
   - name: Master
-    volume: 0.6562844
-    tempVolume: 0.5187981
+    volume: 0.5278911
+    tempVolume: 0.5278911
   - name: Music
-    volume: 0.5250475
-    tempVolume: 0.5250475
+    volume: 0.0001
+    tempVolume: 0.0001
   - name: Effects
-    volume: 0.5687932
-    tempVolume: 0.5687932
+    volume: 0.37575656
+    tempVolume: 0.37575656

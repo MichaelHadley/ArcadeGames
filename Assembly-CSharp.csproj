@@ -79,9 +79,10 @@
     <Compile Include="Assets\Scripts\SpaceInvaders\GameManager.cs" />
     <Compile Include="Assets\Scripts\SpaceInvaders\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\SpaceInvaders\Shield.cs" />
+    <Compile Include="Assets\Scripts\UI\FroggerPauseMenu.cs" />
     <Compile Include="Assets\Scripts\UI\GameMenu.cs" />
     <Compile Include="Assets\Scripts\UI\GameOver.cs" />
-    <Compile Include="Assets\Scripts\UI\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\UI\SIPauseMenu.cs" />
     <Compile Include="Assets\Scripts\UI\SpaceInvadersMenu.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />

@@ -22,20 +22,26 @@ public class GameManager : MonoBehaviour
     }
     public bool Inited { get; private set; }
 
+    [Header("Prefabs")]
     public GameObject GameOverCanvas;
-    public Transform spawnPoint;
-    public int numOfLives = 3;
     public GameObject playerPrefab;
     public GameObject shield;
+
+    [Header("Transforms")]
+    public Transform spawnPoint;
     public Transform shieldSpawn;
     public Transform shieldParent;
 
-    // Score
+    [Header("Score")]
     public TextMeshProUGUI scoreText, highScoreText;
     public int score;
     public int highScore;
+
+    [Header("Lives")]
     public GameObject Life1, Life2, Life3;
 
+    [Header("Life count")]
+    public int numOfLives = 3;
 
     private void Start()
     {
