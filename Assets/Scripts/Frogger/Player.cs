@@ -8,6 +8,10 @@ public class Player : MonoBehaviour
         FroggerManager.Instance.Player = gameObject;
     }
 
+    public AudioClip goalClip;
+    public AudioClip deadFrogClip;
+    public AudioClip splashClip;
+
     // FixedUpdate is called once per frame unless the game is paused(timescale = 0)
     void FixedUpdate()
     {
@@ -23,11 +27,13 @@ public class Player : MonoBehaviour
     {
         if (col.tag == "Vehicle")
         {
+            gameObject.GetComponent<AudioSource>().PlayOneShot(deadFrogClip, .5f);
             FroggerManager.Instance.Death();
         }
 
         if (col.tag == "DeathZone")
         {
+            gameObject.GetComponent<AudioSource>().PlayOneShot(splashClip, .5f);
             FroggerManager.Instance.Death();
         }
 
@@ -36,10 +42,12 @@ public class Player : MonoBehaviour
             if (col.gameObject.transform.GetChild(2).gameObject.activeSelf)
             {
                 FroggerManager.Instance.Death();
+                gameObject.GetComponent<AudioSource>().PlayOneShot(splashClip, .5f);
             }
             else
             {
                 col.gameObject.transform.GetChild(2).gameObject.SetActive(true);
+                gameObject.GetComponent<AudioSource>().PlayOneShot(goalClip, .5f);
                 FroggerManager.Instance.Goal();
             }
         }

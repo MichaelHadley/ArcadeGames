@@ -24,6 +24,7 @@ public class Frogger : MonoBehaviour
     //public GameObject player;
     public Transform playerSpawn;
     public GameObject playerSprite;
+    public int curDir;
 
     [Header("Traffic")]
     public GameObject Truck;
@@ -56,12 +57,20 @@ public class Frogger : MonoBehaviour
     public Transform roadObjects;
     public Transform riverObjects;
 
+    [Header ("Audio")]
+    public AudioClip splashClip;
+    public AudioClip jumpClip;
+
+    [Header ("Lane variables")]
+    public float laneGap = 2f;
+    public int playerLane;
+    public int maxPlayerLane;
 
     private float[] laneProgress;
     private float[] laneWait;
     private int numOfLanes;
     private laneType[] laneDefinition;
-    public float laneGap = 2f;
+    private bool isMoving;
 
     enum laneType
     {
@@ -74,11 +83,6 @@ public class Frogger : MonoBehaviour
         MAX
     }
     
-    public int playerLane;
-    public int maxPlayerLane;
-    private bool isMoving;
-    public int curDir;
-
     private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
@@ -234,6 +238,7 @@ public class Frogger : MonoBehaviour
             playerSprite.transform.DOMoveY(playerSprite.transform.position.y + laneGap, 0.2f);
             playerSprite.transform.Rotate(0, 0, (curDir - 0) * 90);
             curDir = 0;
+            gameObject.GetComponent<AudioSource>().PlayOneShot(jumpClip, .5f);
             playerLane++;
             StartCoroutine("LandingCheck");
         }
@@ -248,6 +253,7 @@ public class Frogger : MonoBehaviour
                 playerSprite.transform.DOMoveY(playerSprite.transform.position.y - laneGap, 0.2f);
                 playerSprite.transform.Rotate(0, 0, (curDir - 2) * 90);
                 curDir = 2;
+                gameObject.GetComponent<AudioSource>().PlayOneShot(jumpClip, .5f);
                 playerLane--;
                 StartCoroutine("LandingCheck");
             }
@@ -265,6 +271,7 @@ public class Frogger : MonoBehaviour
                 playerSprite.transform.DOMoveX(playerSprite.transform.position.x + laneGap, 0.2f);
                 playerSprite.transform.Rotate(0, 0, (curDir - 1) * 90);
                 curDir = 1;
+                gameObject.GetComponent<AudioSource>().PlayOneShot(jumpClip, .5f);
                 StartCoroutine("LandingCheck");
             }
         }
@@ -281,6 +288,7 @@ public class Frogger : MonoBehaviour
                 playerSprite.transform.DOMoveX(playerSprite.transform.position.x - laneGap, 0.2f);
                 playerSprite.transform.Rotate(0, 0, (curDir - 3) * 90);
                 curDir = 3;
+                gameObject.GetComponent<AudioSource>().PlayOneShot(jumpClip, .5f);
                 StartCoroutine("LandingCheck");
             }
         }
@@ -340,6 +348,8 @@ public class Frogger : MonoBehaviour
             }
             else
             {
+                //play splash sound
+                gameObject.GetComponent<AudioSource>().PlayOneShot(splashClip, .5f);
                 //player is dead
                 FroggerManager.Instance.Death();
             }

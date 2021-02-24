@@ -67,7 +67,6 @@
     <Compile Include="Assets\Scripts\Audio\Sliders.cs" />
     <Compile Include="Assets\Scripts\Frogger\Frogger.cs" />
     <Compile Include="Assets\Scripts\Frogger\FroggerManager.cs" />
-    <Compile Include="Assets\Scripts\Frogger\Goal.cs" />
     <Compile Include="Assets\Scripts\Frogger\Player.cs" />
     <Compile Include="Assets\Scripts\Frogger\SpriteManager.cs" />
     <Compile Include="Assets\Scripts\GameManagement\InputManager.cs" />
