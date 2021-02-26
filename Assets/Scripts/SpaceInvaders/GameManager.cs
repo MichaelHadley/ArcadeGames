@@ -44,12 +44,36 @@ public class GameManager : MonoBehaviour
 
     private GameObject[] bosses;
 
+    // Delay death
+    private float stopProgress;
+    private bool stopped;
+
     private void Start()
     {
         SpawnShields();
 
         // Display "HighScore"
         highScoreText.text = "" + PlayerPrefs.GetInt("HighScore");
+    }
+
+    private void Update()
+    {
+        PauseWhenDead();
+    }
+
+    private void PauseWhenDead()
+    {
+        // Stopped is player dead, pause game for 2 seconds then restart
+        if (stopped)
+        {
+            stopProgress += Time.unscaledDeltaTime / 1.3f;
+            if (stopProgress >= 1)
+            {
+                stopProgress = 0;
+                stopped = false;
+                Time.timeScale = 1;
+            }
+        }
     }
 
     private void SpawnShields()
@@ -127,6 +151,8 @@ public class GameManager : MonoBehaviour
         else
         {
             StartCoroutine(SpawnPlayer());
+            stopped = true;
+            Time.timeScale = 0f;
         }
 
         // Turn off life game object in game UI if life is lost
@@ -156,7 +182,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator SpawnPlayer()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
         GameObject player = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
     }
 

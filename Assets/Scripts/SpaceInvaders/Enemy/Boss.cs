@@ -32,6 +32,7 @@ public class Boss : MonoBehaviour
     {
         bossMovementClip.GetComponent<AudioSource>();
         bossMovementClip.Play(0);
+        bossMovementClip.volume = 0.75f;
     }
 
     private void Start()

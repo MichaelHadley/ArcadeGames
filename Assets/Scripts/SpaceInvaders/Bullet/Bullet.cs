@@ -63,6 +63,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Bullet collision with enemy
         if (collision.gameObject.tag == "Enemy" && bulletType == BulletType.player)
         {
             if (collision.GetComponent<EnemyController>().isDead == false)
@@ -89,6 +90,7 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        // Bullet collision with boss
         else if (collision.gameObject.tag == "Boss" && bulletType == BulletType.player)
         {
             if (collision.GetComponent<Boss>().isDead == false)
@@ -109,12 +111,13 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        // Bullet collision with player
         else if (collision.gameObject.tag == "Player" && bulletType == BulletType.enemy)
         {
             if (collision.GetComponent<PlayerController>().shield == false)
             {
                 // Play audioclip
-                collision.gameObject.GetComponent<AudioSource>().PlayOneShot(shipExplosion, 1f);
+                collision.gameObject.GetComponent<AudioSource>().PlayOneShot(shipExplosion, 2f);
 
                 // Initiate explosion spite
                 collision.GetComponent<SpriteRenderer>().sprite = explodedShipImage;
@@ -126,7 +129,7 @@ public class Bullet : MonoBehaviour
                 collision.GetComponent<PlayerController>().isDead = true;
 
                 // Destroy explosion after 0.5 of a second
-                Destroy(collision.gameObject, 0.5f);
+                Destroy(collision.gameObject, .5f);
 
                 GameManager.Instance.PlayerDeath();
             }

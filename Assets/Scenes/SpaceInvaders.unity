@@ -296,6 +296,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3087858045291071358, guid: 4be6e73bfd1176f4ba7c19a169dd9074,
+        type: 3}
+      propertyPath: shieldDuration
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4be6e73bfd1176f4ba7c19a169dd9074, type: 3}
 --- !u!1 &214397093
@@ -812,7 +817,6 @@ MonoBehaviour:
   scoreText: {fileID: 1156772523}
   highScoreText: {fileID: 929956397}
   score: 0
-  highScore: 0
   Life1: {fileID: 1672291982}
   Life2: {fileID: 381901344}
   Life3: {fileID: 345935622}
