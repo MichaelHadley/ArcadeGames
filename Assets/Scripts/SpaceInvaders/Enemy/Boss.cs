@@ -24,8 +24,15 @@ public class Boss : MonoBehaviour
 
     [Header("Audio")]
     public AudioClip enemyBulletClip;
+    public AudioSource bossMovementClip;
 
     private SpriteRenderer spriteRenderer;
+
+    private void Awake()
+    {
+        bossMovementClip.GetComponent<AudioSource>();
+        bossMovementClip.Play(0);
+    }
 
     private void Start()
     {

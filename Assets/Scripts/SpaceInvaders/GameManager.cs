@@ -5,7 +5,7 @@ using System.IO;
 
 public class GameManager : MonoBehaviour
 {
-    string FilePath = "Assets/Resources/SpaceInvadersHighScore.txt";
+    //string FilePath = "Assets/Resources/SpaceInvadersHighScore.txt";
 
     private static GameManager _instance;
     public static GameManager Instance
@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
     [Header("Score")]
     public TextMeshProUGUI scoreText, highScoreText;
     public int score;
-    public int highScore;
 
     [Header("Lives")]
     public GameObject Life1, Life2, Life3;
@@ -43,23 +42,14 @@ public class GameManager : MonoBehaviour
     [Header("Life count")]
     public int numOfLives = 3;
 
+    private GameObject[] bosses;
+
     private void Start()
     {
         SpawnShields();
 
-        if (File.Exists(FilePath))
-        {
-            //Write some text to the test.txt file
-            StreamReader reader = new StreamReader(FilePath);
-            string tmp = reader.ReadLine();
-            highScore = int.Parse(tmp);
-            reader.Close();
-        }
-        else
-        {
-            highScore = 0;
-        }
-        highScoreText.text = highScore.ToString();
+        // Display "HighScore"
+        highScoreText.text = "" + PlayerPrefs.GetInt("HighScore");
     }
 
     private void SpawnShields()
@@ -105,15 +95,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void UpdateHighScore()
-    {
-        if (score > highScore)
-        {
-            highScore = score;
-        }
-        highScoreText.text = highScore.ToString();
-    }
-
     public void NextLevel()
     {
         // Reset game time
@@ -139,12 +120,8 @@ public class GameManager : MonoBehaviour
         // If num of lives is equal to 0 the game is over
         if (numOfLives == 0)
         {
-            if (score >= highScore)
-            {
-                StreamWriter writer = new StreamWriter(FilePath, false);
-                writer.WriteLine(score.ToString());
-                writer.Close();
-            }
+            UpdateHighScore();
+
             GameOver();
         }
         else
@@ -167,6 +144,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void UpdateHighScore()
+    {
+        // If the current "HighScore" is less than the scored value set new highscore
+        if (PlayerPrefs.GetInt("HighScore") < score)
+        {
+            // Set "HighScore" from score value
+            PlayerPrefs.SetInt("HighScore", score);
+        }
+    }
+
     public IEnumerator SpawnPlayer()
     {
         yield return new WaitForSeconds(2);
@@ -175,6 +162,13 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
+        bosses = GameObject.FindGameObjectsWithTag("Boss");
+
+        foreach (GameObject boss in bosses)
+        {
+            boss.GetComponent<Boss>().bossMovementClip.Pause();
+        }
+
         // Dispay GameOverCanvas once the player has died 3 times
         GameOverCanvas.SetActive(true);
         Debug.Log("GAME OVER");
