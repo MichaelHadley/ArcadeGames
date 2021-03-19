@@ -27,13 +27,13 @@ public class Player : MonoBehaviour
     {
         if (col.tag == "Vehicle")
         {
-            gameObject.GetComponent<AudioSource>().PlayOneShot(deadFrogClip, .5f);
+            gameObject.GetComponent<AudioSource>().PlayOneShot(deadFrogClip);
             FroggerManager.Instance.Death();
         }
 
         if (col.tag == "DeathZone")
         {
-            gameObject.GetComponent<AudioSource>().PlayOneShot(splashClip, .5f);
+            gameObject.GetComponent<AudioSource>().PlayOneShot(splashClip);
             FroggerManager.Instance.Death();
         }
 
@@ -42,12 +42,12 @@ public class Player : MonoBehaviour
             if (col.gameObject.transform.GetChild(2).gameObject.activeSelf)
             {
                 FroggerManager.Instance.Death();
-                gameObject.GetComponent<AudioSource>().PlayOneShot(splashClip, .5f);
+                gameObject.GetComponent<AudioSource>().PlayOneShot(splashClip);
             }
             else
             {
                 col.gameObject.transform.GetChild(2).gameObject.SetActive(true);
-                gameObject.GetComponent<AudioSource>().PlayOneShot(goalClip, .5f);
+                gameObject.GetComponent<AudioSource>().PlayOneShot(goalClip);
                 FroggerManager.Instance.Goal();
             }
         }

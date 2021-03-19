@@ -6,7 +6,10 @@ public class SIPauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
 
-    public AudioClip spaceInvadersClip;
+    public AudioSource spaceInvadersMusic;
+
+    private GameObject[] bosses;
+
     private bool GameIsPaused = false;
 
     private bool pauseButton;
@@ -26,14 +29,31 @@ public class SIPauseMenu : MonoBehaviour
             if (!GameIsPaused)
             {
                 Time.timeScale = 0;
-                GetComponent<AudioSource>().loop = true;
-                GetComponent<AudioSource>().PlayOneShot(spaceInvadersClip);
+
+                bosses = GameObject.FindGameObjectsWithTag("Boss");
+
+                foreach (GameObject boss in bosses)
+                {
+                    boss.GetComponent<Boss>().bossMovementClip.Pause();
+                }
+
+                // Plays pause music
+                spaceInvadersMusic.Play();
+
                 pauseMenu.SetActive(true);
             }
             else
             {
                 Time.timeScale = 1;
-                GetComponent<AudioSource>().Pause();
+
+                foreach (GameObject boss in bosses)
+                {
+                    boss.GetComponent<Boss>().bossMovementClip.UnPause();
+                }
+
+                // Pause music
+                spaceInvadersMusic.Pause();
+
                 pauseMenu.SetActive(false);
             }
         }
@@ -51,7 +71,7 @@ public class SIPauseMenu : MonoBehaviour
     public void ResumeGame()
     {
         Time.timeScale = 1;
-        GetComponent<AudioSource>().Pause();
+        spaceInvadersMusic.Pause();
         pauseMenu.SetActive(false);
     }
 
@@ -61,7 +81,7 @@ public class SIPauseMenu : MonoBehaviour
         buttonReleased = true;
         ResumeGame();
         DOTween.KillAll();
-        GetComponent<AudioSource>().UnPause();
+        spaceInvadersMusic.UnPause();
         SceneManager.LoadScene("SpaceInvadersMenu");
     }
 }

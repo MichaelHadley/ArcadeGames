@@ -1,5 +1,9 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/GameMenu.unity
+=======
+- path: Assets/Scenes/SpaceInvaders.unity
+>>>>>>> 50c710178defaf38b87d74b280c88ce3de7a9ebc
   isLoaded: 1
   isActive: 1
   isSubScene: 0

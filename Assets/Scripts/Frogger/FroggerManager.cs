@@ -2,26 +2,11 @@
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using TMPro;
-using System.IO;
+
 
 public class FroggerManager : MonoBehaviour
 {
-    public GameObject LevelCompleteCanvas;
-
-    public GameObject lifeOne, lifeTwo, lifeThree;
-
-    public GameObject goalOne, goalTwo, goalThree, goalFour;
-
-
-    public TextMeshProUGUI score, highScoreText, GameOverScore;
-
-    public GameObject GameOverCanvas;
-    public GameObject Player;
-    private float stopProgress;
-    private bool stopped;
-
-    string FilePath = "Assets/Resources/FroggerHighScore.txt";
-
+    // Class instance
     private static FroggerManager _instance;
     public static FroggerManager Instance
     {
@@ -37,27 +22,37 @@ public class FroggerManager : MonoBehaviour
     }
     public bool Inited { get; private set; }
 
+    [Header("GameObjects")]
+    public GameObject Player;
+    public GameObject lifeOne, lifeTwo, lifeThree;
+    public GameObject goalOne, goalTwo, goalThree, goalFour;
+
+    [Header("UI Text")]
+    public TextMeshProUGUI scoreText, highScoreText, GameOverScore;
+
+    [Header("UI Objects")]
+    public GameObject LevelCompleteCanvas;
+    public GameObject GameOverCanvas;
+
+    [Header("Audio")]
+    public AudioClip gameOverMusic;
+
+    [Header("Score Variables")]
+    private int Scored;
+    
     private int lives = 3;
-    public int Scored;
-    public int highScore;
     private int frogAtEnd = 0;
+
+    // Delay death
+    private float stopProgress;
+    private bool stopped;
 
     private void Start()
     {
-        if (File.Exists(FilePath))
-        {
-            //Write some text to the test.txt file
-            StreamReader reader = new StreamReader(FilePath);
-            string tmp = reader.ReadLine();
-            highScore = int.Parse(tmp);
-            reader.Close();
-        }
-        else 
-        {
-            highScore = 0;
-        }
-        highScoreText.text = highScore.ToString();
+        // Display "highscore"
+        highScoreText.text = "" + PlayerPrefs.GetInt("highscore");
     }
+
     public void Update()
     {
         if (stopped)
@@ -82,24 +77,25 @@ public class FroggerManager : MonoBehaviour
         if(reason == "laneProgress")
         {
             Scored += 10;
-            score.text = Scored + " ";
+            scoreText.text = Scored + " ";
             GameOverScore.text = Scored + " ";
         }
         else if(reason == "Goal")
         {
             Scored += 100;
-            score.text = Scored + " ";
+            scoreText.text = Scored + " ";
             GameOverScore.text = Scored + " ";
         }
     }
 
     public void UpdateHighScore()
     {
-        if (Scored > highScore)
+        // If the current "highscore" is less than the scored value set new highscore
+        if (PlayerPrefs.GetInt("highscore") < Scored)
         {
-            highScore = Scored;
+            // Set "highscore" from scored value
+            PlayerPrefs.SetInt("highscore", Scored);
         }
-        highScoreText.text = highScore.ToString();
     }
 
     public void Death()
@@ -111,13 +107,7 @@ public class FroggerManager : MonoBehaviour
 
         if(lives == 0)
         {
-            //Write some text to the test.txt file
-            if(Scored >= highScore)
-            {
-                StreamWriter writer = new StreamWriter(FilePath, false);
-                writer.WriteLine(Scored.ToString());
-                writer.Close();
-            }
+            UpdateHighScore();
             EndGame();
         }
         else
@@ -183,6 +173,9 @@ public class FroggerManager : MonoBehaviour
             
             DOTween.KillAll();
             Time.timeScale = 0f;
+
+            gameObject.GetComponent<AudioSource>().PlayOneShot(gameOverMusic);
+            gameObject.GetComponent<AudioSource>().loop = true;
         }
     }
 
@@ -214,12 +207,14 @@ public class FroggerManager : MonoBehaviour
         Time.timeScale = 1;
         //Cursor.visible = false;
         GameOverCanvas.SetActive(false);
+        gameObject.GetComponent<AudioSource>().Stop();
         Restart();
     }
 
     public void QuitFrogger()
     {
         PlayAgain();
+        gameObject.GetComponent<AudioSource>().Stop();
         SceneManager.LoadScene("FroggerMenu");
     }
 }

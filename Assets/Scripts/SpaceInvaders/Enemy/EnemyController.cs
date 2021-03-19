@@ -90,11 +90,11 @@ public class EnemyController : MonoBehaviour
                 // Bullet fire position based off ship
                 Vector3 offset = transform.rotation * bulletOffset;
 
-                // Play audioclip
-                gameObject.GetComponent<AudioSource>().PlayOneShot(enemyBulletClip, .5f);
-
                 // Create bullet
                 Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+
+                // Play audioclip
+                gameObject.GetComponent<AudioSource>().PlayOneShot(enemyBulletClip, .5f);
             }
         }
     }

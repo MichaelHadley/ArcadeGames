@@ -132,6 +132,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c99d094dcd06d948a65aab2cf585f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &41332415 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2451448454378065561, guid: 4b017fa949f9d6d458978bf574ed37be,
+    type: 3}
+  m_PrefabInstance: {fileID: 1435969307}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &83358654
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,6 +295,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3087858045291071358, guid: 4be6e73bfd1176f4ba7c19a169dd9074,
+        type: 3}
+      propertyPath: shieldDuration
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4be6e73bfd1176f4ba7c19a169dd9074, type: 3}
@@ -806,7 +817,6 @@ MonoBehaviour:
   scoreText: {fileID: 1156772523}
   highScoreText: {fileID: 929956397}
   score: 0
-  highScore: 0
   Life1: {fileID: 1672291982}
   Life2: {fileID: 381901344}
   Life3: {fileID: 345935622}
@@ -1521,6 +1531,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9141401519352603415, guid: a616692cff6111d4a9a1d0933ab3f487,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5b6e8448df2a15d40b05d2689f65532b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a616692cff6111d4a9a1d0933ab3f487, type: 3}
 --- !u!1 &1139938585 stripped
@@ -1553,6 +1568,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SIPauseCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2451448454378065561, guid: 4b017fa949f9d6d458978bf574ed37be,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5b6e8448df2a15d40b05d2689f65532b, type: 3}
     - target: {fileID: 5415209871451787532, guid: 4b017fa949f9d6d458978bf574ed37be,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1748,6 +1768,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 24771919}
+    - target: {fileID: 580985579608612209, guid: 4b017fa949f9d6d458978bf574ed37be,
+        type: 3}
+      propertyPath: spaceInvadersMusic
+      value: 
+      objectReference: {fileID: 41332415}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b017fa949f9d6d458978bf574ed37be, type: 3}
 --- !u!1 &1489081843

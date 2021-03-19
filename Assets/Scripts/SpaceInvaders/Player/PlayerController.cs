@@ -65,22 +65,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void DestroyOffScreen()
-    {
-        Vector3 playerRelPos = Camera.main.WorldToViewportPoint(transform.position);
-
-        // If the players relative position is greater than the camera's position, destroy player and deduct one life
-        if (playerRelPos.x < 0f || playerRelPos.x > 1f)
-        {
-            Destroy(gameObject);
-            GameManager.Instance.PlayerDeath();
-        }
-    }
+    
 
     private void FixedUpdate()
     {
-        DestroyOffScreen();
-
         // If dead stop movement so you can't move the exploded sprite
         if (!isDead)
         {
@@ -90,7 +78,22 @@ public class PlayerController : MonoBehaviour
 
     public void Movement()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
+        Vector3 playerRelPos = Camera.main.WorldToViewportPoint(transform.position);
+
+        // Move the player based on x input, but limit to within the screen
+        // 0.2 and 0.98 used to allow for the size of the player
+        if(playerRelPos.x <= 0.02f && Input.GetAxisRaw("Horizontal") < 0)
+        {
+            movement.x= 0;
+        }
+        else if (playerRelPos.x >= 0.98f && Input.GetAxisRaw("Horizontal") > 0)
+        {
+            movement.x = 0;
+        }
+        else
+        {
+            movement.x = Input.GetAxisRaw("Horizontal");
+        }
     }
 
     public void Shoot()

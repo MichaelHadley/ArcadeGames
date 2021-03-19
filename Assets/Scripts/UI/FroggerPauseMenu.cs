@@ -5,7 +5,7 @@ using DG.Tweening;
 public class FroggerPauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
-    public AudioClip froggerClip;
+    public AudioSource froggerMusic;
 
     private bool GameIsPaused = false;
     private bool pauseButton;
@@ -24,14 +24,13 @@ public class FroggerPauseMenu : MonoBehaviour
             if (!GameIsPaused)
             {
                 Time.timeScale = 0;
-                GetComponent<AudioSource>().loop = true;
-                GetComponent<AudioSource>().PlayOneShot(froggerClip);
+                froggerMusic.Play();
                 pauseMenu.SetActive(true);
             }
             else
             {
                 Time.timeScale = 1;
-                GetComponent<AudioSource>().Pause();
+                froggerMusic.Pause();
                 pauseMenu.SetActive(false);
             }
         }
@@ -49,7 +48,7 @@ public class FroggerPauseMenu : MonoBehaviour
     public void ResumeGame()
     {
         Time.timeScale = 1;
-        GetComponent<AudioSource>().Pause();
+        froggerMusic.Pause();
         pauseMenu.SetActive(false);
     }
 
@@ -59,7 +58,7 @@ public class FroggerPauseMenu : MonoBehaviour
         buttonReleased = true;
         ResumeGame();
         DOTween.KillAll();
-        GetComponent<AudioSource>().UnPause();
+        froggerMusic.UnPause();
         SceneManager.LoadScene("FroggerMenu");
     }
 }

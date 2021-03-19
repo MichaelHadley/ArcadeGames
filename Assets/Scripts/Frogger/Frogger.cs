@@ -238,7 +238,7 @@ public class Frogger : MonoBehaviour
             playerSprite.transform.DOMoveY(playerSprite.transform.position.y + laneGap, 0.2f);
             playerSprite.transform.Rotate(0, 0, (curDir - 0) * 90);
             curDir = 0;
-            gameObject.GetComponent<AudioSource>().PlayOneShot(jumpClip, .5f);
+            gameObject.GetComponent<AudioSource>().PlayOneShot(jumpClip, 2f);
             playerLane++;
             StartCoroutine("LandingCheck");
         }
@@ -253,7 +253,7 @@ public class Frogger : MonoBehaviour
                 playerSprite.transform.DOMoveY(playerSprite.transform.position.y - laneGap, 0.2f);
                 playerSprite.transform.Rotate(0, 0, (curDir - 2) * 90);
                 curDir = 2;
-                gameObject.GetComponent<AudioSource>().PlayOneShot(jumpClip, .5f);
+                gameObject.GetComponent<AudioSource>().PlayOneShot(jumpClip, 2f);
                 playerLane--;
                 StartCoroutine("LandingCheck");
             }
@@ -271,7 +271,7 @@ public class Frogger : MonoBehaviour
                 playerSprite.transform.DOMoveX(playerSprite.transform.position.x + laneGap, 0.2f);
                 playerSprite.transform.Rotate(0, 0, (curDir - 1) * 90);
                 curDir = 1;
-                gameObject.GetComponent<AudioSource>().PlayOneShot(jumpClip, .5f);
+                gameObject.GetComponent<AudioSource>().PlayOneShot(jumpClip, 2f);
                 StartCoroutine("LandingCheck");
             }
         }
@@ -288,7 +288,7 @@ public class Frogger : MonoBehaviour
                 playerSprite.transform.DOMoveX(playerSprite.transform.position.x - laneGap, 0.2f);
                 playerSprite.transform.Rotate(0, 0, (curDir - 3) * 90);
                 curDir = 3;
-                gameObject.GetComponent<AudioSource>().PlayOneShot(jumpClip, .5f);
+                gameObject.GetComponent<AudioSource>().PlayOneShot(jumpClip, 2f);
                 StartCoroutine("LandingCheck");
             }
         }
@@ -349,7 +349,7 @@ public class Frogger : MonoBehaviour
             else
             {
                 //play splash sound
-                gameObject.GetComponent<AudioSource>().PlayOneShot(splashClip, .5f);
+                gameObject.GetComponent<AudioSource>().PlayOneShot(splashClip);
                 //player is dead
                 FroggerManager.Instance.Death();
             }
